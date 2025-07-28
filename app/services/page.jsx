@@ -1,67 +1,49 @@
 'use client'
 
-import { useState } from 'react'
-import { FaTh, FaList, FaHeart, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined, FaSearch } from 'react-icons/fa'
+import Link from 'next/link';
+import { useSearchParams } from 'next/navigation';
+import React, { useEffect, useState } from 'react';
+import { FaList, FaTh, FaHeart, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined } from 'react-icons/fa'; // Import the icons
 
-const properties = [
-    {
-        id: 1,
-        title: 'Charming Beach House',
-        address: '39581 Rohan Estates, New York',
-        price: '$179,800.00',
-        beds: 4,
-        baths: 2,
-        size: '1500 sqft',
-        image: '/images/beach-house.jpg',
-    },
-    {
-        id: 2,
-        title: 'Contemporary Loft',
-        address: '39581 Rohan Estates, New York',
-        price: '$335,800.00',
-        beds: 4,
-        baths: 2,
-        size: '1500 sqft',
-        image: '/images/loft.jpg',
-    },
-    {
-        id: 3,
-        title: 'Cozy Cottage',
-        address: '39581 Rohan Estates, New York',
-        price: '$250,800.00',
-        beds: 4,
-        baths: 2,
-        size: '1500 sqft',
-        image: '/images/cottage.jpg',
-    },
-]
+const Services = () => {
+    const searchParams = useSearchParams();
+    const queryString = searchParams.toString();
 
-export default function PropertyListing() {
-    const [view, setView] = useState('list') // default is list
-    const [searchTerm, setSearchTerm] = useState('')
+    const [data, setData] = useState([]);  // Defaulting to an empty array
+    const [loading, setLoading] = useState(true);
+    const [view, setView] = useState('list'); // Set initial view as 'list'
 
-    // Filter properties based on search term (location)
-    const filteredProperties = properties.filter(property =>
-        property.address.toLowerCase().includes(searchTerm.toLowerCase())
-    )
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                let url = 'http://127.0.0.1:8000/room/rooms/';
+
+                if (queryString) {
+                    url = `${url}?${queryString}`;
+                }
+
+                const res = await fetch(url);
+                const response = await res.json();
+                console.log(response);  // Check the response structure
+
+                // Check if the response is an array under 'results'
+                setData(Array.isArray(response.results) ? response.results : []);
+                setLoading(false);
+            } catch (error) {
+                console.error("Error fetching data:", error);
+                setLoading(false);
+                setData([]);  // Ensure data is always an array
+            }
+        };
+
+        fetchData();
+    }, [queryString]);
 
     return (
-        <section className="max-w-7xl mx-auto px-4 py-6">
-            <div className="mb-6 text-center">
-                {/* Search Bar */}
-                <div className="flex items-center border rounded-lg p-2 w-full max-w-md mx-auto">
-                    <FaSearch className="text-gray-500 ml-3" />
-                    <input
-                        type="text"
-                        placeholder="Enter location"
-                        className="w-full p-2 rounded-r-lg border-0 focus:ring-2 focus:ring-blue-500"
-                        value={searchTerm}
-                        onChange={(e) => setSearchTerm(e.target.value)}
-                    />
-                </div>
-            </div>
+        <div className="p-5">
+            <h1 className="text-xl font-semibold">Service Page</h1>
 
-            {/* Toggle View Controls */}
+            {/* View toggle buttons */}
             <div className="flex justify-center gap-4 mb-6">
                 <button
                     onClick={() => setView('list')}
@@ -81,64 +63,72 @@ export default function PropertyListing() {
             <div
                 className={
                     view === 'grid'
-                        ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'
+                        ? 'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6'
                         : 'flex flex-col gap-6'
                 }
             >
-                {filteredProperties.map((property) => (
-                    <div
-                        key={property.id}
-                        className={`min-w-sm rounded-2xl overflow-hidden shadow-lg border bg-white ${view === 'grid' ? 'flex flex-col' : 'flex'}`}
-                    >
-                        {/* Image Section */}
-                        <div className={`relative ${view === 'grid' ? 'min-h-72' : 'w-1/2 h-72'}`}>
-                            <img
-                                src={property.image}
-                                alt={property.title}
-                                className="w-full h-auto object-cover rounded-t-2xl"
-                            />
-                            {/* For Sale Tag */}
-                            <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 text-sm rounded-full z-10">
-                                For Sale
+                {data.length === 0 ? (
+                    <p>No properties found</p>
+                ) : (
+                    data?.map((property) => (
+                        <div
+                            key={property.id}
+                            className={`min-w-sm rounded-2xl overflow-hidden shadow-lg border bg-white ${view === 'grid' ? 'flex flex-col' : 'flex'}`}
+                        >
+                            {/* Image Section */}
+                            <div className={`relative ${view === 'grid' ? 'min-h-72' : 'w-1/2 h-72'}`}>
+                                <img
+                                    src={property.image}
+                                    alt={property.title}
+                                    className="w-full h-auto object-cover rounded-t-2xl"
+                                />
+                                {/* For Sale Tag */}
+                                <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 text-sm rounded-full z-10">
+                                    For Sale
+                                </div>
+                                {/* Favorite Icon */}
+                                <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md cursor-pointer">
+                                    <FaHeart className="text-gray-500 w-5 h-5" />
+                                </div>
                             </div>
-                            {/* Favorite Icon */}
-                            <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md cursor-pointer">
-                                <FaHeart className="text-gray-500 w-5 h-5" />
+
+                            {/* Content Section */}
+                            <div className={`p-5 space-y-3 ${view === 'grid' ? '' : 'w-full'}`}>
+                                <h2 className="text-xl font-semibold">{property.title}</h2>
+                                <div className="flex items-center text-sm text-gray-600 gap-2">
+                                    <FaMapMarkerAlt className="text-red-500" />
+                                    {property.location}
+                                </div>
+
+                                {/* Property Features */}
+                                <div className="grid grid-cols-3 justify-between items-center text-sm text-gray-700 pt-2 border-t mt-4 ">
+                                    <div className="flex justify-start items-center gap-1 ">
+                                        <FaBed className="w-4 h-4" /> Bed {property.bed}
+                                    </div>
+                                    <div className="flex justify-center items-center gap-1 border-x">
+                                        <FaBath className="w-4 h-4" /> Bath {property.bath}
+                                    </div>
+                                    <div className="flex justify-end items-center gap-1 ">
+                                        <FaRulerCombined className="w-4 h-4" /> {property.sqft}
+                                    </div>
+                                </div>
+
+                                {/* Price and Button */}
+                                <div className="pt-4 mt-4 flex justify-between items-center border-t">
+                                    <span className="text-lg font-semibold text-black">${property.price}</span>
+                                    <Link href={`/room/${property.id}`}>
+                                        <button className="px-4 py-2 border rounded-lg hover:bg-gray-100 transition text-sm">
+                                            View More
+                                        </button>
+                                    </Link>
+                                </div>
                             </div>
                         </div>
-
-                        {/* Content Section */}
-                        <div className={`p-5 space-y-3 ${view === 'grid' ? '' : 'w-full'}`}>
-                            <h2 className="text-xl font-semibold">{property.title}</h2>
-                            <div className="flex items-center text-sm text-gray-600 gap-2">
-                                <FaMapMarkerAlt className="text-red-500" />
-                                {property.address}
-                            </div>
-
-                            {/* Property Features */}
-                            <div className="flex justify-between text-sm text-gray-700 pt-2 border-t mt-4">
-                                <div className="flex items-center gap-1">
-                                    <FaBed className="w-4 h-4" /> Bed {property.beds}
-                                </div>
-                                <div className="flex items-center gap-1">
-                                    <FaBath className="w-4 h-4" /> Bath {property.baths}
-                                </div>
-                                <div className="flex items-center gap-1">
-                                    <FaRulerCombined className="w-4 h-4" /> {property.size}
-                                </div>
-                            </div>
-
-                            {/* Price and Button */}
-                            <div className="pt-4 mt-4 flex justify-between items-center border-t">
-                                <span className="text-lg font-semibold text-black">{property.price}</span>
-                                <button className="px-4 py-2 border rounded-lg hover:bg-gray-100 transition text-sm">
-                                    View More
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                ))}
+                    ))
+                )}
             </div>
-        </section>
-    )
-}
+        </div>
+    );
+};
+
+export default Services;
