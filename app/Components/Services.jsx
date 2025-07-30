@@ -17,7 +17,7 @@ const Services = () => {
     const [currentPage, setCurrentPage] = useState(1); // Track current page
     const [total, setTotal] = useState(0)
     // Fetch data
-    const fetchData = async (url) => {
+    const fetchData = (url) => {
         try {
             let fetchUrl = url || 'http://127.0.0.1:8000/room/rooms/';
 
@@ -26,17 +26,22 @@ const Services = () => {
                 fetchUrl = `${fetchUrl}?${queryString}`;
             }
 
-            const res = await fetch(fetchUrl);
-            const response = await res.json();
+            // const res = await fetch(fetchUrl);
+            // const response = await res.json();
+            fetch(fetchUrl)
+                .then(res => res.json())
+                .then(response => {
 
-            console.log(response);  // Check the response structure
 
-            // Set data and pagination links
-            setData(Array.isArray(response.results) ? response.results : []);
-            setTotal(response?.count)
-            setNextPage(response?.next);
-            setPreviousPage(response?.previous);
-            setLoading(false);
+
+                    // Set data and pagination links
+                    setData(Array.isArray(response.results) ? response.results : []);
+                    setTotal(response?.count)
+                    setNextPage(response?.next);
+                    setPreviousPage(response?.previous);
+                    setLoading(false);
+                })
+
         } catch (error) {
             console.error("Error fetching data:", error);
             setLoading(false);
@@ -183,3 +188,5 @@ const Services = () => {
 };
 
 export default Services;
+
+
