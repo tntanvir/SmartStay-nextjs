@@ -1,16 +1,27 @@
 'use client'
 
+import { useUser } from "@/context/UserContext";
+
 import React, { useState } from "react";
 import { RiAccountCircleLine, RiLockPasswordLine } from "react-icons/ri";
+
 
 const SingingFrom = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const { login } = useUser();
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Handle form submission here
-        console.log({ username, password });
+
+        // Basic form validation (optional)
+        if (!username || !password) {
+            alert("Please enter both username and password.");
+            return;
+        }
+
+        login({ username, password });
     };
 
     return (

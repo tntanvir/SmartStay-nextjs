@@ -15,7 +15,7 @@ const Services = () => {
     const [nextPage, setNextPage] = useState(null);
     const [previousPage, setPreviousPage] = useState(null);
     const [currentPage, setCurrentPage] = useState(1); // Track current page
-
+    const [total, setTotal] = useState(0)
     // Fetch data
     const fetchData = async (url) => {
         try {
@@ -33,6 +33,7 @@ const Services = () => {
 
             // Set data and pagination links
             setData(Array.isArray(response.results) ? response.results : []);
+            setTotal(response?.count)
             setNextPage(response?.next);
             setPreviousPage(response?.previous);
             setLoading(false);
@@ -83,22 +84,24 @@ const Services = () => {
 
     return (
         <div className="p-5">
-            <h1 className="text-xl font-semibold">Service Page</h1>
+            <div className='flex justify-between items-center'>
+                <h1 className="text-xl font-semibold">Total Data {total | 0}</h1>
 
-            {/* View toggle buttons */}
-            <div className="flex justify-center gap-4 mb-6">
-                <button
-                    onClick={() => setView('list')}
-                    className={`p-2 rounded-md transition ${view === 'list' ? 'bg-gray-200 text-black' : 'text-gray-400'}`}
-                >
-                    <FaList />
-                </button>
-                <button
-                    onClick={() => setView('grid')}
-                    className={`p-2 rounded-md transition ${view === 'grid' ? 'bg-gray-200 text-black' : 'text-gray-400'}`}
-                >
-                    <FaTh />
-                </button>
+                {/* View toggle buttons */}
+                <div className="flex justify-center gap-4 mb-6">
+                    <button
+                        onClick={() => setView('list')}
+                        className={`p-2 rounded-md transition cursor-pointer ${view === 'list' ? 'bg-gray-200 text-black' : 'text-gray-400'}`}
+                    >
+                        <FaList />
+                    </button>
+                    <button
+                        onClick={() => setView('grid')}
+                        className={`p-2 rounded-md transition cursor-pointer ${view === 'grid' ? 'bg-gray-200 text-black' : 'text-gray-400'}`}
+                    >
+                        <FaTh />
+                    </button>
+                </div>
             </div>
 
             {/* Property Listings */}
@@ -157,23 +160,24 @@ const Services = () => {
                 )}
             </div>
 
-            {/* Pagination */}
+
             <div className="flex justify-between mt-6">
                 <button
                     onClick={handlePreviousPage}
                     disabled={!previousPage}
-                    className="px-4 py-2 border rounded-md bg-gray-200 text-gray-500 cursor-pointer disabled:opacity-50"
+                    className={`px-4 py-2 border rounded-md text-gray-500 cursor-pointer disabled:opacity-50 ${!previousPage ? 'bg-gray-200' : 'text-white bg-blue-500 hover:bg-blue-600'}`}
                 >
                     Previous
                 </button>
                 <button
                     onClick={handleNextPage}
                     disabled={!nextPage}
-                    className="px-4 py-2 border rounded-md bg-gray-200 text-gray-500 cursor-pointer disabled:opacity-50"
+                    className={`px-4 py-2 border rounded-md text-gray-500 cursor-pointer disabled:opacity-50 ${!nextPage ? 'bg-gray-200' : 'text-white bg-green-500 hover:bg-green-600'}`}
                 >
                     Next
                 </button>
             </div>
+
         </div>
     );
 };

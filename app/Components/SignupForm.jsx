@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { RiAccountCircleLine, RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineMail } from "react-icons/md";
+import { Bounce, toast } from "react-toastify";
+import { useRouter } from "next/navigation";
 
 const SignupForm = () => {
     const [username, setUsername] = useState("");
@@ -12,10 +14,14 @@ const SignupForm = () => {
     const [role, setRole] = useState("user");
     const [address, setAddress] = useState("");
     const [profile, setProfile] = useState("");
+    const [password, setPassword] = useState("");
+    const router = useRouter()
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log({
+
+
+        const singup = {
             username,
             email,
             name,
@@ -23,7 +29,36 @@ const SignupForm = () => {
             role,
             address,
             profile,
-        });
+            password
+        }
+
+
+
+        fetch('http://127.0.0.1:8000/auth/singup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(singup),
+        }).then(res => res.json())
+            .then(data => {
+                toast.success(data.message, {
+                    position: "top-center",
+                    autoClose: 5000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce,
+                });
+                router.push('/otp-varify')
+            })
+            .catch(e => console.log(e))
+
+
+
     };
 
     return (
@@ -133,6 +168,17 @@ const SignupForm = () => {
                                 className="peer pl-4 pr-4 py-3 border rounded-md w-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
                             />
                         </div>
+                        <div className="relative">
+                            <input
+                                type="text"
+                                id="password"
+                                name="password"
+                                value={password}
+                                onChange={(e) => setPassword(e.target.value)}
+                                placeholder="Password"
+                                className="peer pl-4 pr-4 py-3 border rounded-md w-full text-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 transition-all duration-300"
+                            />
+                        </div>
 
                     </div>
 
@@ -152,6 +198,11 @@ const SignupForm = () => {
                         Already have an account?{" "}
                         <a href="/signin" className="text-blue-600 hover:underline">
                             Sign In
+                        </a>
+                    </p>
+                    <p className="text-sm text-gray-600">
+                        <a href="/otp-varify" className="text-blue-600 hover:underline">
+                            OTP Varify
                         </a>
                     </p>
                 </div>

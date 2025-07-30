@@ -11,6 +11,7 @@ const SideBer = () => {
     const [types, setTypes] = useState({
         wifi: false,
         breakfast: false,
+        tv: false,
     });
 
     const [location, setLocation] = useState('');
@@ -31,6 +32,7 @@ const SideBer = () => {
         const selectedTypes = [];
         if (types.wifi) selectedTypes.push('wifi');
         if (types.breakfast) selectedTypes.push('breakfast');
+        if (types.tv) selectedTypes.push('tv');
 
         selectedTypes.forEach(type => params.append('types', type));
 
@@ -82,6 +84,7 @@ const SideBer = () => {
         const selectedTypes = [];
         if (types.wifi) selectedTypes.push('wifi');
         if (types.breakfast) selectedTypes.push('breakfast');
+        if (types.tv) selectedTypes.push('tv');
 
         params.delete('types');
         selectedTypes.forEach(type => params.append('types', type));
@@ -147,6 +150,16 @@ const SideBer = () => {
                     />
                     <span className="text-gray-700">Breakfast</span>
                 </div>
+                <div className="flex items-center space-x-4">
+                    <input
+                        type="checkbox"
+                        id="tv"
+                        checked={types.tv}
+                        onChange={handleCheckboxChange}
+                        className="w-5 h-5 text-purple-600 border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500"
+                    />
+                    <span className="text-gray-700">TV</span>
+                </div>
             </div>
 
             <Link href='/services'>
@@ -159,3 +172,7 @@ const SideBer = () => {
 };
 
 export default SideBer;
+
+
+
+

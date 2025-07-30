@@ -2,8 +2,10 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navber from "./Components/Navber";
 import Footer from "./Components/Footer";
+import { UserProvider } from '@/context/UserContext';
 
-
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const geistSans = Geist({
@@ -27,8 +29,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Navber />
-        {children}
+        <UserProvider>
+          <Navber />
+          <ToastContainer />
+          {children}
+        </UserProvider>
         <Footer />
       </body>
     </html>
