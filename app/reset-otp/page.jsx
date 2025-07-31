@@ -1,5 +1,6 @@
 'use client'
 
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { toast } from 'react-toastify';
@@ -85,6 +86,7 @@ const ResetOtp = () => {
                         {loading ? 'Sending...' : 'Resend OTP'}
                     </button>
                 </form>
+                <p className='w-full text-center pt-1'><Link className='text-sm hover:underline text-blue-600 w-full' href='/signin'>Go to Signin?</Link></p>
             </div>
 
 

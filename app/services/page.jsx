@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import Services from '../Components/Services';
 
 const page = () => {
     return (
-        <div>
+        <Suspense fallback={<div>Loading...</div>}>
             <Services />
-        </div>
+        </Suspense>
     );
 };
 

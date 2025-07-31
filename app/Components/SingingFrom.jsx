@@ -1,6 +1,7 @@
 'use client'
 
 import { useUser } from "@/context/UserContext";
+import Link from "next/link";
 
 import React, { useState } from "react";
 import { RiAccountCircleLine, RiLockPasswordLine } from "react-icons/ri";
@@ -27,7 +28,7 @@ const SingingFrom = () => {
     return (
         <div className="h-screen flex justify-center items-center">
             <div className="bg-white p-10 rounded-xl shadow-lg w-full max-w-md">
-                {/* Header */}
+                <p className='w-full text-center'><Link className='text-sm hover:underline text-blue-600 w-full' href='/'>Back to home?</Link></p>
                 <h2 className="text-3xl font-semibold text-center text-gray-800 mb-6">Login</h2>
 
                 {/* Login Form */}

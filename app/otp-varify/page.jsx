@@ -132,6 +132,7 @@ const OTPVerify = () => {
                 <div className='pt-3'>
                     <Link href='reset-otp' className=' text-blue-500'>Resend OTP</Link>
                 </div>
+                <p className='w-full text-center'><Link className='text-sm hover:underline text-blue-600 w-full' href='/signin'>Go to Signin?</Link></p>
             </div>
 
 

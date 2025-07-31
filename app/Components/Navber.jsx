@@ -5,6 +5,7 @@ import Link from 'next/link'
 import { FiMenu, FiX } from 'react-icons/fi'
 import { usePathname } from 'next/navigation'
 import { useUser } from '@/context/UserContext'
+import Dropdown from '@/components/ui/dropdown'
 
 export default function Navber() {
     const [isOpen, setIsOpen] = useState(false)
@@ -12,8 +13,8 @@ export default function Navber() {
     const toggleMenu = () => setIsOpen(!isOpen)
     const router = usePathname()
 
-    const isSignInOrSignUp = router === '/signin' || router === '/signup'
-    console.log(router)
+    const isSignInOrSignUp = router === '/signin' || router === '/signup' || router === '/otp-varify' || router === '/reset-otp' || router === '/forgot-password'
+    // console.log(router)
 
     if (isSignInOrSignUp) {
         return null
@@ -25,7 +26,7 @@ export default function Navber() {
         { href: '/services', label: 'Services' },
         { href: '/contact', label: 'Contact' },
     ]
-    console.log(user)
+
 
     return (
         <nav className="bg-white bg-opacity-30 backdrop-blur-lg shadow-lg  w-full sticky top-0 z-50 transition-all duration-500 ease-in-out">
@@ -48,13 +49,21 @@ export default function Navber() {
                     ))}
 
                     {user ?
-                        <img src='https://avatars.githubusercontent.com/u/116637220?v=4' alt="ff" srcSet="jj" width={50} className='rounded-full bg-amber-300' height={50} />
-                        : <Link
+
+                        <div className="w-full">
+
+                            <Dropdown user={user} />
+
+                        </div>
+
+                        :
+                        <Link
                             href="/signin"
                             className="text-black bg-yellow-500 hover:bg-yellow-600 py-2 px-6 rounded-md font-medium transition duration-300 ease-in-out"
                         >
                             Singin
-                        </Link>}
+                        </Link>
+                    }
                 </div>
 
                 {/* Mobile Icon */}
