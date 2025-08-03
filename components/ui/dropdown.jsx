@@ -183,9 +183,11 @@ export default function Dropdown({ user }) {
                     />
                 }>
                 <div className="flex flex-col space-y-1">
-                    <DropdownMenuItem onClick={() => console.log('Profile clicked')} active={true}>
-                        <User className="mr-3 h-5 w-5 text-zinc-500" />
-                        <span>Profile</span>
+                    <DropdownMenuItem active={true} >
+                        <Link href='/deshboard' className='flex w-full'>
+                            <User className="mr-3 h-5 w-5 text-zinc-500" />
+                            <span >Profile</span>
+                        </Link>
                     </DropdownMenuItem>
                     <DropdownMenuItem onClick={() => console.log('Community clicked')}>
                         <Community className="mr-3 h-5 w-5 text-zinc-500" />

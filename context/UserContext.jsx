@@ -1,101 +1,9 @@
-// "use client";
-
-// import { useRouter } from "next/navigation";
-// import React, { createContext, useState, useContext, useEffect } from 'react';
-// const UserContext = createContext();
-
-
-// export const useUser = () => useContext(UserContext);
-// export const UserProvider = ({ children }) => {
-//     const [user, setUser] = useState('');
-//     const router = useRouter()
-//     useEffect(() => {
-//         const storedUser = sessionStorage.getItem('user');
-//         if (storedUser) {
-//             setUser(JSON.parse(storedUser));
-//         }
-//     }, []);
-
-//     const login = (loginData) => {
-//         fetch('http://127.0.0.1:8000/auth/singin', {
-//             method: 'POST',
-//             headers: {
-//                 'Content-Type': 'application/json',
-//             },
-//             body: JSON.stringify(loginData),
-//         })
-//             .then(res => res.json())
-//             .then(data => {
-//                 setUser(data?.user)
-//                 if (data.access) {
-//                     sessionStorage.setItem('access', data?.access)
-//                     sessionStorage.setItem('refresh', data?.refresh)
-//                     sessionStorage.setItem('user', JSON.stringify(data?.user));
-//                     router.push('/')
-//                 }
-//                 else {
-//                     alert("An error occurred while logging in.");
-//                 }
-
-//             })
-//             .catch(error => {
-//                 console.error('Error:', error);
-//                 alert("An error occurred while logging in.");
-//             });
-//     };
-
-//     const logout = () => {
-//         const refreshToken = sessionStorage.getItem('refresh'); // or sessionStorage
-//         const accessToken = sessionStorage.getItem('access');
-
-//         if (!refreshToken) {
-//             console.error("No refresh token found");
-//             return;
-//         }
-//         try {
-
-//             fetch('http://127.0.0.1:8000/auth/singout', {
-//                 method: 'POST',
-//                 headers: {
-//                     'Content-Type': 'application/json',
-//                     'Authorization': `Bearer ${accessToken}`
-//                 },
-//                 body: JSON.stringify({ token: refreshToken })
-//             })
-//                 .then(res => res.json())
-//                 .then(data => {
-
-//                     setUser(null);
-//                     sessionStorage.removeItem('access')
-//                     sessionStorage.removeItem('refresh')
-//                     sessionStorage.removeItem('user')
-//                     router.push('/signin')
-//                 })
-//         }
-//         catch {
-//             sessionStorage.removeItem('access')
-//             sessionStorage.removeItem('refresh')
-//             sessionStorage.removeItem('user')
-//             router.push('/signin')
-//         }
-
-//     };
-
-//     return (
-//         <UserContext.Provider value={{ user, login, logout }}>
-//             {children}
-//         </UserContext.Provider>
-//     );
-// };
-
-
-
 "use client";
 
 import { useRouter } from "next/navigation";
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import { Slide, toast } from 'react-toastify';
-
+import Cookies from 'js-cookie';
 
 const UserContext = createContext();
 
@@ -127,6 +35,8 @@ export const UserProvider = ({ children }) => {
                     sessionStorage.setItem('access', data?.access);
                     sessionStorage.setItem('refresh', data?.refresh);
                     sessionStorage.setItem('user', JSON.stringify(data?.user));
+                    Cookies.set('access', data.access, { path: '/', secure: true, sameSite: 'lax' });
+                    Cookies.set('refresh', data.refresh, { path: '/', secure: true, sameSite: 'lax' });
                     toast.success('Log In successfully!', {
                         position: "top-right",
                         autoClose: 4000,
@@ -173,6 +83,8 @@ export const UserProvider = ({ children }) => {
                     sessionStorage.removeItem('access');
                     sessionStorage.removeItem('refresh');
                     sessionStorage.removeItem('user');
+                    Cookies.remove('access', { path: '/' });
+                    Cookies.remove('refresh', { path: '/' });
                     toast.success('Logged out successfully!', {
                         position: "top-right",
                         autoClose: 4000,
@@ -190,6 +102,8 @@ export const UserProvider = ({ children }) => {
             sessionStorage.removeItem('access');
             sessionStorage.removeItem('refresh');
             sessionStorage.removeItem('user');
+            Cookies.remove('access', { path: '/' });
+            Cookies.remove('refresh', { path: '/' });
             toast.error("Error during logout.");
             router.push('/signin');
         }

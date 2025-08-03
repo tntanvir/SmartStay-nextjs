@@ -5,6 +5,7 @@ import { RiAccountCircleLine, RiLockPasswordLine } from "react-icons/ri";
 import { MdOutlineMail } from "react-icons/md";
 import { Bounce, toast } from "react-toastify";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 const SignupForm = () => {
     const [username, setUsername] = useState("");
@@ -196,14 +197,14 @@ const SignupForm = () => {
                 <div className="text-center mt-4">
                     <p className="text-sm text-gray-600">
                         Already have an account?{" "}
-                        <a href="/signin" className="text-blue-600 hover:underline">
+                        <Link href="/signin" className="text-blue-600 hover:underline">
                             Sign In
-                        </a>
+                        </Link>
                     </p>
                     <p className="text-sm text-gray-600">
-                        <a href="/otp-varify" className="text-blue-600 hover:underline">
+                        <Link href="/otp-varify" className="text-blue-600 hover:underline">
                             OTP Varify
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

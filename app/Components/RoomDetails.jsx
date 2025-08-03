@@ -1,9 +1,15 @@
 'use client'
 
 import { FaBed, FaBath, FaRulerCombined, FaMapMarkerAlt, FaPhoneAlt, FaRegStar, FaWifi, FaParking } from 'react-icons/fa';
+import RoomBookingSection from './RoomBookingSection';
+import { useState } from 'react';
+import { useUser } from '@/context/UserContext';
+
 
 const RoomDetails = ({ data }) => {
-    if (!data) return <div>Loading...</div>;
+
+    const { user } = useUser()
+
 
     return (
         <section className="max-w-7xl mx-auto px-6 py-16 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
@@ -78,10 +84,10 @@ const RoomDetails = ({ data }) => {
                             <strong>Type:</strong> {data.max_capacity}
                         </li>
 
-                        <li className="flex items-center gap-2">
+                        {/* <li className="flex items-center gap-2">
                             <FaRegStar className="text-yellow-400" />
                             <strong>Purpose:</strong> {data.is_booking ? 'Booked' : 'Available'}
-                        </li>
+                        </li> */}
                     </ul>
                 </div>
                 <div className="flex flex-col gap-6 text-gray-700">
@@ -98,14 +104,8 @@ const RoomDetails = ({ data }) => {
 
             </div>
 
-            {/* Contact & View More */}
-            <div className="mt-12 flex justify-between items-center border-t pt-8">
-                {data.is_booking !== true && (
-                    <button className="px-10 py-4 bg-purple-600 text-white rounded-xl text-lg shadow-xl hover:bg-purple-700 transform transition-all duration-300 ease-in-out">
-                        Book Now
-                    </button>
-                )}
-            </div>
+
+            {user && <RoomBookingSection id={data.id} />}
         </section>
     );
 };

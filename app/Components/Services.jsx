@@ -156,7 +156,7 @@ const Services = () => {
                                 <div className="pt-4 mt-4 flex justify-between items-center border-t">
                                     <span className="text-lg font-semibold text-black">${property.price}</span>
                                     <Link href={`/room/${property.id}`}>
-                                        <button className="px-4 py-2 border rounded-lg hover:bg-gray-100 transition text-sm">View More</button>
+                                        <button className="px-4 py-2 border rounded-lg hover:bg-gray-100 transition text-sm cursor-pointer">View More</button>
                                     </Link>
                                 </div>
                             </div>

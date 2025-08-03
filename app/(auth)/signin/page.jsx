@@ -1,5 +1,6 @@
 import React from 'react'
-import SingingFrom from '../Components/SingingFrom'
+import SingingFrom from '@/app/Components/SingingFrom'
+
 
 export default function singin() {
     return (

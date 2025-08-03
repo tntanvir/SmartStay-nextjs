@@ -70,11 +70,11 @@ const SingingFrom = () => {
                         Login
                     </button>
 
-                    {/* Forgot Password Link */}
+
                     <div className="text-center mt-4">
-                        <a href="/forgot-password" className="text-sm text-blue-600 hover:underline">
+                        <Link href="/forgot-password" className="text-sm text-blue-600 hover:underline">
                             Forgot Password?
-                        </a>
+                        </Link>
                     </div>
                 </form>
 
@@ -82,9 +82,9 @@ const SingingFrom = () => {
                 <div className="text-center mt-4">
                     <p className="text-sm text-gray-600">
                         Don't have an account?{" "}
-                        <a href="/signup" className="text-blue-600 hover:underline">
+                        <Link href="/signup" className="text-blue-600 hover:underline">
                             Sign Up
-                        </a>
+                        </Link>
                     </p>
                 </div>
             </div>

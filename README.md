@@ -52,8 +52,8 @@ The goal of **SmartStay's frontend** is to provide a seamless, responsive, and u
 ### 6. **QR Code Check-in**
 - Users can check-in using QR codes at the hotel for a seamless experience.
 
-### 7. **Admin Dashboard**
-- Hotel owners and admins can manage hotels, rooms, and bookings through a robust dashboard.
+### 7. **Admin deshboard**
+- Hotel owners and admins can manage hotels, rooms, and bookings through a robust deshboard.
 
 ---
 

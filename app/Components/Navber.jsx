@@ -13,7 +13,7 @@ export default function Navber() {
     const toggleMenu = () => setIsOpen(!isOpen)
     const router = usePathname()
 
-    const isSignInOrSignUp = router === '/signin' || router === '/signup' || router === '/otp-varify' || router === '/reset-otp' || router === '/forgot-password'
+    const isSignInOrSignUp = router === '/signin' || router === '/signup' || router === '/otp-varify' || router === '/reset-otp' || router === '/forgot-password' || router.startsWith('/deshboard')
     // console.log(router)
 
     if (isSignInOrSignUp) {
