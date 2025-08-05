@@ -182,6 +182,7 @@ export default function Dropdown({ user }) {
                         className="w-full h-12 object-cover rounded-3xl"
                     />
                 }>
+                {console.log(user?.profile)}
                 <div className="flex flex-col space-y-1">
                     <DropdownMenuItem active={true} >
                         <Link href='/deshboard' className='flex w-full'>

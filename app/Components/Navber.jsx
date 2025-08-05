@@ -53,6 +53,7 @@ export default function Navber() {
                         <div className="w-full">
 
                             <Dropdown user={user} />
+                            {console.log(user?.profile)}
 
                         </div>
 

@@ -48,7 +48,7 @@ export const UserProvider = ({ children }) => {
                         theme: "light",
                         transition: Slide,
                     });
-                    router.push('/');
+                    router.push('/deshboard');
                 } else {
                     toast.error("An error occurred while logging in.");
                 }
