@@ -185,7 +185,7 @@ export default function Dropdown({ user }) {
                 {console.log(user?.profile)}
                 <div className="flex flex-col space-y-1">
                     <DropdownMenuItem active={true} >
-                        <Link href='/deshboard' className='flex w-full'>
+                        <Link href='/deshboard/analytics' className='flex w-full'>
                             <User className="mr-3 h-5 w-5 text-zinc-500" />
                             <span >Profile</span>
                         </Link>

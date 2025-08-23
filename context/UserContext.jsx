@@ -10,7 +10,7 @@ const UserContext = createContext();
 export const useUser = () => useContext(UserContext);
 
 export const UserProvider = ({ children }) => {
-    const [user, setUser] = useState('');
+    const [user, setUser] = useState(null);
     const router = useRouter();
 
     useEffect(() => {
@@ -48,7 +48,7 @@ export const UserProvider = ({ children }) => {
                         theme: "light",
                         transition: Slide,
                     });
-                    router.push('/deshboard');
+                    router.push('/deshboard/analytics');
                 } else {
                     toast.error("An error occurred while logging in.");
                 }

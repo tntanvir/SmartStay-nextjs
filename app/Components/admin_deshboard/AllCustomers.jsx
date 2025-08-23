@@ -1,5 +1,6 @@
 'use client';
 
+import AlertComponent from '@/components/comp-313';
 import React, { useState } from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 
@@ -48,13 +49,15 @@ const AllUsers = ({ users }) => {
                                     </span>
                                 </td>
 
-                                <td className="px-4 py-4 text-green-600">{user?.is_active ? 'Active' : 'Inactive'}</td>
+                                <td className="px-4 py-4 text-green-600">{user?.activity ? 'Active' : 'Inactive'}</td>
 
 
                                 <td className="px-4 py-4 flex justify-end gap-3">
-                                    <button className="text-blue-500 hover:text-blue-700 cursor-pointer" title="Update">
+                                    {/* <button className="text-blue-500 hover:text-blue-700 cursor-pointer" title="Update">
                                         <FiEdit size={18} />
-                                    </button>
+                                    </button> */}
+                                    <AlertComponent id={user?.id} />
+
 
                                     <button className="text-red-500 hover:text-red-700 cursor-pointer" title="Delete">
                                         <FiTrash size={18} />

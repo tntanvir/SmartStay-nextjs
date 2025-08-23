@@ -2,7 +2,6 @@
 
 import { useUser } from '@/context/UserContext';
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import {
     FaHome,
@@ -17,6 +16,9 @@ import {
     FaClipboardList,
     FaHeart,
 } from 'react-icons/fa';
+import { FaMoneyCheckDollar } from "react-icons/fa6";
+import { usePathname } from 'next/navigation';
+import { MdOutlineAddHomeWork } from 'react-icons/md';
 
 const getCurrentUserRole = () => {
     const user = JSON.parse(sessionStorage.getItem('user'));
@@ -27,9 +29,9 @@ const DeshboardSidebar = () => {
     const pathname = usePathname();
     const [isOpen, setIsOpen] = useState(true);
     const [role, setRole] = useState(null);
-
     const { user, logout } = useUser();
 
+    // Always call hooks at top level
     useEffect(() => {
         if (user) {
             setRole(user?.role);
@@ -37,10 +39,16 @@ const DeshboardSidebar = () => {
             const userRole = getCurrentUserRole();
             setRole(userRole);
         }
-    }, []);
+    }, [user]);
+
+    // Early return for checkout page after all hooks
+    if (pathname.includes('/deshboard/checkout')) {
+        return null;
+    }
 
     const userLinks = [
-        { name: 'Home', href: '/deshboard', icon: <FaHome /> },
+        { name: 'Home', href: '/', icon: <FaHome /> },
+        { name: 'Analytics', href: '/deshboard/analytics', icon: <FaChartBar /> },
         { name: 'My Bookings', href: '/deshboard/mybookings', icon: <FaClipboardList /> },
         { name: 'Favorites', href: '/deshboard/favorites', icon: <FaHeart /> },
         { name: 'Profile', href: '/deshboard/profile', icon: <FaUser /> },
@@ -48,21 +56,21 @@ const DeshboardSidebar = () => {
     ];
 
     const ownerLinks = [
-        { name: 'Home', href: '/deshboard', icon: <FaHome /> },
-        // { name: 'My Hotels', href: '/deshboard/hotels', icon: <FaHotel /> },
-        { name: 'Rooms', href: '/deshboard/rooms', icon: <FaBed /> },
-        { name: 'Bookings', href: '/deshboard/room-bookings', icon: <FaClipboardList /> },
+        { name: 'Home', href: '/', icon: <FaHome /> },
         { name: 'Analytics', href: '/deshboard/analytics', icon: <FaChartBar /> },
+        { name: 'Rooms', href: '/deshboard/rooms', icon: <FaBed /> },
+        { name: 'Add Room', href: '/deshboard/rooms/add', icon: <MdOutlineAddHomeWork /> },
+        { name: 'Bookings', href: '/deshboard/room-bookings', icon: <FaClipboardList /> },
         { name: 'Settings', href: '/deshboard/settings', icon: <FaCog /> },
     ];
 
     const adminLinks = [
-        { name: 'Dashboard', href: '/deshboard', icon: <FaHome /> },
+        { name: 'Home', href: '/', icon: <FaHome /> },
+        { name: 'Analytics', href: '/deshboard/analytics', icon: <FaChartBar /> },
         { name: 'Manage Users', href: '/deshboard/users', icon: <FaUsers /> },
-        { name: 'Manage Hotels', href: '/deshboard/hotels', icon: <FaHotel /> },
+        { name: 'Transactions', href: '/deshboard/transactions', icon: <FaMoneyCheckDollar /> },
         { name: 'Bookings', href: '/deshboard/bookings', icon: <FaClipboardList /> },
         { name: 'System Settings', href: '/deshboard/system', icon: <FaTools /> },
-        { name: 'Analytics', href: '/deshboard/analytics', icon: <FaChartBar /> },
     ];
 
     const getLinksForRole = () => {
@@ -75,7 +83,7 @@ const DeshboardSidebar = () => {
 
     return (
         <aside
-            className={`bg-white shadow-md min-h-screen p-5 flex flex-col transition-all duration-300 ${isOpen ? 'w-64' : 'w-20'
+            className={`bg-white shadow-md min-h-screen p-5 flex flex-col transition-all duration-300 ${isOpen ? 'min-w-64' : 'max-w-20'
                 }`}
         >
             <div className="flex items-center justify-between mb-10">
@@ -89,7 +97,7 @@ const DeshboardSidebar = () => {
                 ) : (
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-2xl text-purple-600"
+                        className="text-2xl text-purple-600 cursor-pointer font-bold"
                     >
                         D
                     </button>
@@ -98,7 +106,7 @@ const DeshboardSidebar = () => {
 
             <nav className="space-y-4 flex-1">
                 {role === null ? (
-                    // Skeleton loader
+                    // Skeleton loader while role is null
                     Array(5)
                         .fill(0)
                         .map((_, i) => (

@@ -9,7 +9,7 @@ export default function deshboardLayout({ children }) {
         <div className="flex">
             <DeshboardSidebar />
             <main
-                className={`transition-all duration-300 w-full p-6 bg-gray-50 min-h-screen `}
+                className={`transition-all duration-300 w-full px-2 py-6 bg-gray-50 min-h-screen `}
             >
                 {children}
             </main>

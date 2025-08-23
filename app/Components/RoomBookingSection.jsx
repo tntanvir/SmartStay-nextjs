@@ -98,23 +98,26 @@ export default function RoomBookingSection({ id }) {
             });
             return
         }
-        const formattedDates = {
+        const formattedDatesn = {
             start_date: formatDatenext(startDate),
             end_date: formatDatenext(endDate),
             room: id
 
         }
+        console.log(JSON.stringify(formattedDatesn))
+
         fetch(`http://127.0.0.1:8000/booking/booking`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${accessToken}`
             },
-            body: JSON.stringify(formattedDates),
+            body: JSON.stringify(formattedDatesn),
         })
             .then(res => res.json())
             .then(data => {
-                if (data?.id) {
+                console.log(data)
+                if (data?.room) {
                     toast.success('Booking Successful!', {
                         position: "top-left",
                         autoClose: 3999,
@@ -131,7 +134,7 @@ export default function RoomBookingSection({ id }) {
                     setBooking('')
                 }
                 else {
-                    toast.error('Booking Fail', {
+                    toast.error(`${data?.error}`, {
                         position: "top-left",
                         autoClose: 3999,
                         hideProgressBar: false,
@@ -142,6 +145,9 @@ export default function RoomBookingSection({ id }) {
                         theme: "light",
                         transition: Bounce,
                     });
+                    setStartDate('')
+                    setEndDate('')
+                    setBooking('')
                 }
             })
     }
