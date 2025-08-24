@@ -62,6 +62,7 @@ const DeshboardSidebar = () => {
         { name: 'Add Room', href: '/deshboard/rooms/add', icon: <MdOutlineAddHomeWork /> },
         { name: 'Bookings', href: '/deshboard/room-bookings', icon: <FaClipboardList /> },
         { name: 'Settings', href: '/deshboard/settings', icon: <FaCog /> },
+        { name: 'Profile', href: '/deshboard/profile', icon: <FaUser /> },
     ];
 
     const adminLinks = [
@@ -70,6 +71,7 @@ const DeshboardSidebar = () => {
         { name: 'Manage Users', href: '/deshboard/users', icon: <FaUsers /> },
         { name: 'Transactions', href: '/deshboard/transactions', icon: <FaMoneyCheckDollar /> },
         { name: 'Bookings', href: '/deshboard/bookings', icon: <FaClipboardList /> },
+        { name: 'Profile', href: '/deshboard/profile', icon: <FaUser /> },
         { name: 'System Settings', href: '/deshboard/system', icon: <FaTools /> },
     ];
 

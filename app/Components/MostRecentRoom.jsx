@@ -1,32 +1,14 @@
-// import React from 'react';
-// import PropertyCard from './PropertyCard';
-
-// const PopulerRoom = () => {
-//     return (
-//         <div className="py-12">
-
-//             <div className='text-center max-w-3xl mx-auto mb-8'>
-//                 <h2 className="text-4xl font-bold text-gray-900">Best Room Booking</h2>
-//                 <p className="mt-2 text-gray-600">
-//                     Discover the Best Booking rooms added to our collection.
-//                 </p>
-//             </div>
-//         </div>
-//     );
-// };
-
-// export default PopulerRoom;
 'use client'
 import React, { useEffect, useState } from 'react';
 import PropertyCard from './PropertyCard';
 
 
-const PopulerRoom = () => {
+const MostRecentRoom = () => {
     const [room, setRoom] = useState(null);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('http://127.0.0.1:8000/room/rooms/most-booked')
+        fetch('http://127.0.0.1:8000/room/rooms/latest')
             .then(response => response.json())
             .then(data => {
                 setRoom(data);
@@ -48,12 +30,12 @@ const PopulerRoom = () => {
     );
 
     return (
-        <div className="py-12">
+        <div className="py-12 bg-gray-50">
 
             <div className='text-center max-w-3xl mx-auto mb-8'>
-                <h2 className="text-4xl font-bold text-gray-900">Best Room Booking</h2>
+                <h2 className="text-4xl font-bold text-gray-900">Most Recent Rooms</h2>
                 <p className="mt-2 text-gray-600">
-                    Discover the Best Booking rooms added to our collection.
+                    Discover the latest rooms added to our collection. Find your perfect space today!
                 </p>
             </div>
 
@@ -78,5 +60,4 @@ const PopulerRoom = () => {
     );
 };
 
-export default PopulerRoom;
-
+export default MostRecentRoom;

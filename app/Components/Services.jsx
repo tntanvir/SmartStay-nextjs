@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSearchParams } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { FaList, FaTh, FaHeart, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined } from 'react-icons/fa';
+import { toast } from 'react-toastify';
 
 const Services = () => {
     const searchParams = useSearchParams();
@@ -87,6 +88,33 @@ const Services = () => {
         fetchData();
     }, [queryString]);
 
+
+    const AddMYFavorites = (id) => {
+        fetch(`http://127.0.0.1:8000/favorites/favorites/`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${sessionStorage.getItem('access')}`,
+            },
+            body: JSON.stringify({ room_id: id }),
+        })
+            .then(res => res.json())
+            .then(data => {
+
+
+                if (data.error) {
+                    toast.warning(data.error);
+                }
+                else {
+                    toast.success("Room added to favorites!");
+                }
+            })
+            .catch(err => {
+                console.error(err);
+            });
+    };
+
+
     return (
         <div className="p-5">
             <div className='flex justify-between items-center'>
@@ -126,8 +154,10 @@ const Services = () => {
                                 {/* For Sale Tag */}
                                 <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 text-sm rounded-full z-10">For Sale</div>
                                 {/* Favorite Icon */}
-                                <div className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md cursor-pointer">
-                                    <FaHeart className="text-gray-500 w-5 h-5" />
+                                <div
+                                    onClick={() => AddMYFavorites(property.id)}
+                                    className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md cursor-pointer">
+                                    <FaHeart className="text-gray-500 w-5 h-5 " />
                                 </div>
                             </div>
 
