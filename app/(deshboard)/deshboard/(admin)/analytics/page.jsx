@@ -46,7 +46,7 @@ export default function AnalyticsPage() {
     }, []);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/analytics/analytics/", {
+        fetch("https://smartstay-api-production.up.railway.app/analytics/analytics/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',

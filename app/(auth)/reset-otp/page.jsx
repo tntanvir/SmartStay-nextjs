@@ -25,7 +25,7 @@ const ResetOtp = () => {
 
         setLoading(true);
         try {
-            const response = await fetch('http://127.0.0.1:8000/auth/resend-otp', {
+            const response = await fetch('https://smartstay-api-production.up.railway.app/auth/resend-otp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

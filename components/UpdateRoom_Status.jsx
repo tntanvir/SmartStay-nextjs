@@ -22,7 +22,7 @@ export default function UpdateRoom_Status({ id }) {
 
 
     const loadData = (id) => {
-        fetch(`http://127.0.0.1:8000/booking/booking/${id}`, {
+        fetch(`https://smartstay-api-production.up.railway.app/booking/booking/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ export default function UpdateRoom_Status({ id }) {
 
 
     const handleUpdate = () => {
-        fetch(`http://127.0.0.1:8000/booking/booking/${id}`, {
+        fetch(`https://smartstay-api-production.up.railway.app/booking/booking/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

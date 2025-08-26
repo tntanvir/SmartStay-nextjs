@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FaListAlt, FaCheckCircle, FaTimesCircle, FaDoorOpen } from "react-icons/fa";
 
 const page = () => {
-    const corUrls = 'http://127.0.0.1:8000/booking/booking';
+    const corUrls = 'https://smartstay-api-production.up.railway.app/booking/booking';
     const [data, setData] = useState(null);
     const [urls, setUrls] = useState(corUrls)
     const [next, setNext] = useState(null);
