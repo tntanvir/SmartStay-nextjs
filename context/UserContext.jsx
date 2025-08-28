@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
     const login = (loginData) => {
-        fetch('https://smartstay-api-production.up.railway.app/auth/singin', {
+        fetch('http://127.0.0.1:8000/auth/singin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const UserProvider = ({ children }) => {
         }
 
         try {
-            fetch('https://smartstay-api-production.up.railway.app/auth/singout', {
+            fetch('http://127.0.0.1:8000/auth/singout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -110,55 +110,75 @@ export const UserProvider = ({ children }) => {
     };
 
 
-    const refreshToken = async () => {
-        const refresh = sessionStorage.getItem("refresh");
+    // const refreshToken = async () => {
+    //     const refresh = sessionStorage.getItem("refresh");
 
-        if (!refresh) {
-            return;
-        }
+    //     if (!refresh) {
+    //         return;
+    //     }
 
-        try {
-            const res = await fetch(`https://smartstay-api-production.up.railway.app/auth/refresh`, {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({ refresh }),
-            });
+    //     try {
+    //         const res = await fetch(`http://127.0.0.1:8000/auth/refresh`, {
+    //             method: "POST",
+    //             headers: {
+    //                 "Content-Type": "application/json",
+    //             },
+    //             body: JSON.stringify({ refresh }),
+    //         });
 
-            const data = await res.json();
+    //         const data = await res.json();
 
-            // ✅ Check if both access and refresh tokens are returned
-            if (data.access && data.refresh) {
-                sessionStorage.setItem("access", data.access);
-                sessionStorage.setItem("refresh", data.refresh);
-                console.log("✅ Access and refresh token updated");
-            } else if (data.access) {
-                sessionStorage.setItem("access", data.access);
-                console.log("✅ Access token refreshed (no new refresh token)");
-            } else {
-                console.warn("⚠️ Failed to get new access token", data);
-            }
+    //         // ✅ Check if both access and refresh tokens are returned
+    //         if (data.access && data.refresh) {
+    //             sessionStorage.setItem("access", data.access);
+    //             sessionStorage.setItem("refresh", data.refresh);
+    //             console.log("✅ Access and refresh token updated");
+    //         } else if (data.access) {
+    //             sessionStorage.setItem("access", data.access);
+    //             console.log("✅ Access token refreshed (no new refresh token)");
+    //         } else {
+    //             console.warn("⚠️ Failed to get new access token", data);
+    //         }
 
-        } catch (err) {
-            console.error("❌ Token refresh failed:", err);
-        }
-    };
+    //     } catch (err) {
+    //         console.error("❌ Token refresh failed:", err);
+    //     }
+    // };
 
+
+    // useEffect(() => {
+    //     const interval = setInterval(() => {
+    //         if (sessionStorage.getItem("refresh")) {
+    //             console.log("⏳ Refreshing token...");
+    //             refreshToken();
+    //         }
+    //     }, 1 * 60 * 1000); // Every 5 minutes
+
+    //     return () => clearInterval(interval);
+    // }, []);
 
     useEffect(() => {
-        const interval = setInterval(() => {
-            if (sessionStorage.getItem("refresh")) {
-                console.log("⏳ Refreshing token...");
-                refreshToken();
-            }
-        }, 1 * 60 * 1000); // Every 5 minutes
+        if (!user && sessionStorage.getItem("access")) {
+            fetch(`http://127.0.0.1:8000/auth/me`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${sessionStorage.getItem("access")}`
+                }
+            })
+                .then(response => response.json())
+                .then(data => {
+                    setUser(data);
+                })
+                .catch(error => {
+                    console.error("Error fetching user data:", error);
+                });
+        }
 
-        return () => clearInterval(interval);
-    }, []);
+    }, [])
 
     return (
-        <UserContext.Provider value={{ user, login, logout }}>
+        <UserContext.Provider value={{ user, setUser, login, logout }}>
             {children}
         </UserContext.Provider>
     );

@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import AllCustomers from './AllCustomers';
 
 const AllUser = () => {
-    const baseUrl = 'https://smartstay-api-production.up.railway.app/auth/alluser';
+    const baseUrl = 'http://127.0.0.1:8000/auth/alluser';
     const [users, setUsers] = useState([]);
     const [adminCount, setAdminCount] = useState(0);
     const [ownerCount, setOwnerCount] = useState(0);

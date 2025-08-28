@@ -26,7 +26,7 @@ const PopulerRoom = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://smartstay-api-production.up.railway.app/room/rooms/most-booked')
+        fetch('http://127.0.0.1:8000/room/rooms/most-booked')
             .then(response => response.json())
             .then(data => {
                 setRoom(data);

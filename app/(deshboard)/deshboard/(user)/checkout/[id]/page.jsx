@@ -30,7 +30,7 @@ function CheckoutForm() {
         setLoading(true);
 
         try {
-            const res = await fetch('https://smartstay-api-production.up.railway.app/payment/payment', {
+            const res = await fetch('http://127.0.0.1:8000/payment/payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({

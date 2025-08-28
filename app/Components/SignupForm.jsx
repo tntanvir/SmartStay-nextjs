@@ -35,7 +35,7 @@ const SignupForm = () => {
 
 
 
-        fetch('https://smartstay-api-production.up.railway.app/auth/singup', {
+        fetch('http://127.0.0.1:8000/auth/singup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

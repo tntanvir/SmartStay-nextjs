@@ -42,7 +42,7 @@ export default function RoomBookingSection({ id }) {
 
         console.log("Booking Data:", formattedDates)
         // alert(`Booking from ${formattedDates.start_date} to ${formattedDates.end_date}`)
-        const url = `https://smartstay-api-production.up.railway.app/room/rooms/${id}/check-availability/?start_date=${formattedDates.start_date}&end_date=${formattedDates.end_date}`
+        const url = `http://127.0.0.1:8000/room/rooms/${id}/check-availability/?start_date=${formattedDates.start_date}&end_date=${formattedDates.end_date}`
         console.log(url)
         fetch(url)
             .then(res => res.json())
@@ -106,7 +106,7 @@ export default function RoomBookingSection({ id }) {
         }
         console.log(JSON.stringify(formattedDatesn))
 
-        fetch(`https://smartstay-api-production.up.railway.app/booking/booking`, {
+        fetch(`http://127.0.0.1:8000/booking/booking`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

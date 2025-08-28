@@ -9,6 +9,7 @@ import { MdOutlinePayments } from "react-icons/md";
 export default function MyBookingList({ data, setUrls, next, previous }) {
     return (
         <div className="overflow-x-auto w-full bg-white shadow-lg rounded-lg border border-gray-200">
+            {data && console.log(data)}
             <table className="min-w-full divide-y divide-gray-200">
                 <thead className="bg-gray-50">
                     <tr className="text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
@@ -16,7 +17,9 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                         {/* <th className="px-6 py-3">User</th> */}
                         <th className="px-3 py-3">Start Date</th>
                         <th className="px-3 py-3">End Date</th>
-                        <th className="px-6 py-3">Rate</th>
+                        <th className="px-6 py-3">Total Price</th>
+                        <th className="px-6 py-3">Status</th>
+
                         <th className="px-6 py-3">Payment</th>
                         <th className="px-4 py-3">Action</th>
                     </tr>
@@ -31,6 +34,7 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                             payment_status,
                             user,
                             total_price,
+                            status
                         }) => (
                             <tr
                                 key={id}
@@ -81,6 +85,23 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                                 <td className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">
                                     ${total_price}
                                 </td>
+
+                                <td className="px-6 py-4 whitespace-nowrap">
+                                    <span
+                                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold
+                                                ${status === "confirmed"
+                                                ? "bg-green-100 text-green-700"
+                                                : status === "pending"
+                                                    ? "bg-orange-200 text-orange-700"
+                                                    : status === "cancelled"
+                                                        ? "bg-red-100 text-red-700"
+                                                        : "bg-gray-100 text-gray-700"
+                                            }`}
+                                    >
+                                        {status.charAt(0).toUpperCase() + status.slice(1)}
+                                    </span>
+                                </td>
+
 
                                 <td className="px-6 py-4 whitespace-nowrap">
                                     <span

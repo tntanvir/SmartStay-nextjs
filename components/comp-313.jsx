@@ -21,7 +21,7 @@ export default function AlertComponent({ id }) {
   const [status, setStatus] = useState(false);
 
   useEffect(() => {
-    fetch(`https://smartstay-api-production.up.railway.app/auth/update-status/${id}`, {
+    fetch(`http://127.0.0.1:8000/auth/update-status/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export default function AlertComponent({ id }) {
 
 
   const handleStatusChange = () => {
-    fetch(`https://smartstay-api-production.up.railway.app/auth/update-status/${id}`, {
+    fetch(`http://127.0.0.1:8000/auth/update-status/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',

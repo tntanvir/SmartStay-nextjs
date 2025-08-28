@@ -20,7 +20,7 @@ const Services = () => {
     // Fetch data
     const fetchData = (url) => {
         try {
-            let fetchUrl = url || 'https://smartstay-api-production.up.railway.app/room/rooms/';
+            let fetchUrl = url || 'http://127.0.0.1:8000/room/rooms/';
 
             // If queryString is present, append it to the URL
             if (queryString) {
@@ -90,7 +90,7 @@ const Services = () => {
 
 
     const AddMYFavorites = (id) => {
-        fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/`, {
+        fetch(`http://127.0.0.1:8000/favorites/favorites/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

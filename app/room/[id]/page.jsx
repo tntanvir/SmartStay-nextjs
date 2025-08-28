@@ -8,7 +8,7 @@ import React from 'react';
 const PropertyDetails = async ({ params }) => {
     const { id } = await params;
 
-    const res = await fetch(`https://smartstay-api-production.up.railway.app/room/rooms/${id}`)
+    const res = await fetch(`http://127.0.0.1:8000/room/rooms/${id}`)
     const data = await res.json()
 
 

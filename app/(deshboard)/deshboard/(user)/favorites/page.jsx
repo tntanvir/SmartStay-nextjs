@@ -10,7 +10,7 @@ const Page = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch('https://smartstay-api-production.up.railway.app/favorites/favorites/', {
+        fetch('http://127.0.0.1:8000/favorites/favorites/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const Page = () => {
 
 
     const removeFromFavorites = (id) => {
-        fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/${id}/`, {
+        fetch(`http://127.0.0.1:8000/favorites/favorites/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${sessionStorage.getItem('access')}`,
