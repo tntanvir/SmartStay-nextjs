@@ -10,7 +10,7 @@ const Page = () => {
 
     useEffect(() => {
         setLoading(true);
-        fetch('http://127.0.0.1:8000/favorites/favorites/', {
+        fetch('https://smartstay-api-production.up.railway.app/favorites/favorites/', {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -39,7 +39,7 @@ const Page = () => {
 
 
     const removeFromFavorites = (id) => {
-        fetch(`http://127.0.0.1:8000/favorites/favorites/${id}/`, {
+        fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/${id}/`, {
             method: 'DELETE',
             headers: {
                 'Authorization': `Bearer ${sessionStorage.getItem('access')}`,
@@ -130,7 +130,7 @@ const Page = () => {
                                             room?.room?.max_capacity?.slice(1)}
                                     </td>
                                     <td className="p-4 ">
-                                        <button onClick={() => removeFromFavorites(room?.id)} className="flex items-center gap-1 px-3 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">
+                                        <button onClick={() => removeFromFavorites(room?.id)} className="flex items-center gap-1 px-3 py-2 bg-purple-500 text-white rounded-lg hover:bg-purple-600 transition">
                                             <Trash2 size={16} />
                                         </button>
                                     </td>

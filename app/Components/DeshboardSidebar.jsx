@@ -140,7 +140,7 @@ const DeshboardSidebar = () => {
             <div className="mt-auto">
                 <button
                     onClick={logout}
-                    className="flex items-center gap-3 p-3 rounded-lg transition hover:bg-red-100 text-red-500 hover:text-red-600 cursor-pointer w-full"
+                    className="flex items-center gap-3 p-3 rounded-lg transition hover:bg-purple-100 text-purple-500 hover:text-purple-600 cursor-pointer w-full"
                 >
                     <FaSignOutAlt />
                     {isOpen && <span>Logout</span>}

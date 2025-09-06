@@ -1,3 +1,5 @@
+
+
 'use client'
 import Link from "next/link";
 import { FaHeart, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
@@ -5,7 +7,7 @@ import { toast } from "react-toastify";
 
 export default function PropertyCard({ image, title, location, bed, bath, sqft, price, id, total_bookings }) {
     const AddMYFavorites = (id) => {
-        fetch(`http://127.0.0.1:8000/favorites/favorites/`, {
+        fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -15,8 +17,6 @@ export default function PropertyCard({ image, title, location, bed, bath, sqft, 
         })
             .then(res => res.json())
             .then(data => {
-
-
                 if (data.error) {
                     toast.warning(data.error);
                 }
@@ -28,64 +28,89 @@ export default function PropertyCard({ image, title, location, bed, bath, sqft, 
                 console.error(err);
             });
     };
+
     return (
-        <div className="min-w-sm rounded-2xl overflow-hidden shadow-lg border bg-white">
+        <div className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-purple-100 hover:border-purple-200">
             {/* Image Section */}
-            <div className="relative group">
+            <div className="relative group overflow-hidden">
                 <img
                     src={image}
                     alt="Property Image"
                     width={500}
                     height={300}
-                    className="w-full h-64 object-cover rounded-t-2xl transition-transform duration-300 group-hover:scale-105"
+                    className="w-full h-64 object-cover transition-transform duration-500 ease-in-out group-hover:scale-105"
                 />
 
-                {/* For Sale Tag */}
-                {total_bookings ?
-                    <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 text-sm rounded-full z-10 shadow-lg">
-                        Total Bookings: {total_bookings}
+                {/* Status Tag */}
+                {total_bookings ? (
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 text-sm font-medium rounded-full shadow-lg">
+                        ✨ {total_bookings} Bookings
                     </div>
-                    :
-                    <div className="absolute top-4 left-4 bg-black text-white px-3 py-1 text-sm rounded-full z-10 shadow-lg">
-                        For Sale
-                    </div>}
+                ) : (
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 py-2 text-sm font-medium rounded-full shadow-lg">
+                        🏠 For Sale
+                    </div>
+                )}
 
                 {/* Favorite Icon */}
-                <div
+                <button
                     onClick={() => AddMYFavorites(id)}
-                    className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-md cursor-pointer hover:bg-red-500 hover:text-white transition">
-                    <FaHeart className="w-5 h-5" />
-                </div>
+                    className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-110"
+                >
+                    <FaHeart className="w-4 h-4" />
+                </button>
             </div>
 
-
             {/* Content Section */}
-            <div className="p-5 space-y-3">
-                <h2 className="text-xl font-semibold">{title}</h2>
-                <div className="flex items-center text-sm text-gray-600 gap-2">
-                    <FaMapMarkerAlt className="text-red-500" />
-                    {location}
+            <div className="px-6 py-3">
+                {/* Title & Location */}
+                <div className="mb-5">
+                    <h3 className="text-xl font-bold text-gray-800 mb-3 hover:text-purple-700 transition-colors duration-200">{title}</h3>
+                    <div className="flex items-center text-gray-600">
+                        <div className="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center mr-2">
+                            <FaMapMarkerAlt className="w-3 h-3 text-purple-600" />
+                        </div>
+                        <span className="text-sm font-medium">{location}</span>
+                    </div>
                 </div>
 
                 {/* Property Features */}
-                <div className="flex justify-between text-sm text-gray-700 pt-2 border-t mt-4">
-                    <div className="flex items-center gap-1">
-                        <FaBed className="w-4 h-4" /> Bed {bed}
+                <div className="flex justify-between items-center mb-5 p-4 bg-purple-50 rounded-xl border border-purple-100">
+                    <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 bg-purple-200 rounded-lg flex items-center justify-center mb-1">
+                            <FaBed className="w-4 h-4 text-purple-700" />
+                        </div>
+                        <span className="text-sm font-semibold text-gray-700">{bed}</span>
+                        <span className="text-xs text-gray-500">Beds</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                        <FaBath className="w-4 h-4" /> Bath {bath}
+                    <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 bg-purple-200 rounded-lg flex items-center justify-center mb-1">
+                            <FaBath className="w-4 h-4 text-purple-700" />
+                        </div>
+                        <span className="text-sm font-semibold text-gray-700">{bath}</span>
+                        <span className="text-xs text-gray-500">Baths</span>
                     </div>
-                    <div className="flex items-center gap-1">
-                        <FaRulerCombined className="w-4 h-4" /> {sqft} sqft
+                    <div className="flex flex-col items-center">
+                        <div className="w-8 h-8 bg-purple-200 rounded-lg flex items-center justify-center mb-1">
+                            <FaRulerCombined className="w-4 h-4 text-purple-700" />
+                        </div>
+                        <span className="text-sm font-semibold text-gray-700">{sqft}</span>
+                        <span className="text-xs text-gray-500">Sqft</span>
                     </div>
                 </div>
 
                 {/* Price and Button */}
-                <div className="pt-4 mt-4 flex justify-between items-center border-t">
-                    <span className="text-lg font-semibold text-black">${price}</span>
+                <div className="flex justify-between items-center">
+                    <div className="flex flex-col">
+                        <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-800 bg-clip-text text-transparent">
+                            ${price}
+                        </span>
+                        <span className="text-sm text-gray-500">per month</span>
+                    </div>
+
                     <Link href={`/room/${id}`}>
-                        <button className="px-4 py-2 border rounded-lg hover:bg-gray-100 transition text-sm">
-                            View More
+                        <button className="px-6 py-3 bg-gradient-to-r from-purple-600 to-purple-700 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                            View Details →
                         </button>
                     </Link>
                 </div>

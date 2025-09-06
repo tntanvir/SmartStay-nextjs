@@ -5,7 +5,7 @@ import React, { useEffect, useState } from 'react';
 import { FaListAlt, FaCheckCircle, FaTimesCircle, FaDoorOpen } from "react-icons/fa";
 
 const page = () => {
-    const corUrls = 'http://127.0.0.1:8000/booking/booking';
+    const corUrls = 'https://smartstay-api-production.up.railway.app/booking/booking';
     const [data, setData] = useState(null);
     const [urls, setUrls] = useState(corUrls)
     const [next, setNext] = useState(null);
@@ -65,7 +65,7 @@ const page = () => {
 
                 {/* Unpaid Bookings */}
                 <div onClick={() => { setUrls(`${corUrls}?unpaid=true`) }} className="bg-white border border-gray-100 rounded-xl shadow-md hover:shadow-sm cursor-pointer transition duration-300 p-5 flex items-center gap-4">
-                    <div className="rounded-full p-3 bg-gradient-to-r from-red-500 to-red-700 shadow-md">
+                    <div className="rounded-full p-3 bg-gradient-to-r from-purple-500 to-purple-700 shadow-md">
                         <FaTimesCircle className="w-5 h-5 text-white" />
                     </div>
                     <div>

@@ -61,7 +61,7 @@
 //         const accessToken = sessionStorage.getItem('access');
 
 //         try {
-//             const response = await fetch('http://127.0.0.1:8000/auth/change-password', {
+//             const response = await fetch('https://smartstay-api-production.up.railway.app/auth/change-password', {
 //                 method: 'POST',
 //                 headers: {
 //                     'Content-Type': 'application/json',
@@ -89,7 +89,7 @@
 
 
 //     const updateUser = () => {
-//         fetch(`http://127.0.0.1:8000/auth/me`, {
+//         fetch(`https://smartstay-api-production.up.railway.app/auth/me`, {
 //             method: "PATCH",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -137,7 +137,7 @@
 //                                 <FaCheckCircle className="mr-1" /> Verified
 //                             </p>
 //                         ) : (
-//                             <p className="flex items-center text-red-600 text-sm mt-2">
+//                             <p className="flex items-center text-purple-600 text-sm mt-2">
 //                                 <FaTimesCircle className="mr-1" /> Not Verified
 //                             </p>
 //                         )}
@@ -193,7 +193,7 @@
 //                         <p
 //                             className={`inline-block px-3 py-1 rounded-full text-sm ${user.is_active
 //                                 ? "bg-green-100 text-green-600"
-//                                 : "bg-red-100 text-red-600"
+//                                 : "bg-purple-100 text-purple-600"
 //                                 }`}
 //                         >
 //                             {user.is_active ? "Active" : "Inactive"}
@@ -446,7 +446,7 @@ export default function ProfilePage() {
 
         try {
             const response = await fetch(
-                "http://127.0.0.1:8000/auth/change-password",
+                "https://smartstay-api-production.up.railway.app/auth/change-password",
                 {
                     method: "POST",
                     headers: {
@@ -472,7 +472,7 @@ export default function ProfilePage() {
     };
 
     const updateUser = () => {
-        fetch(`http://127.0.0.1:8000/auth/me`, {
+        fetch(`https://smartstay-api-production.up.railway.app/auth/me`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -520,7 +520,7 @@ export default function ProfilePage() {
                                 <FaCheckCircle className="mr-1" /> Verified
                             </p>
                         ) : (
-                            <p className="flex items-center text-red-600 text-sm mt-2">
+                            <p className="flex items-center text-purple-600 text-sm mt-2">
                                 <FaTimesCircle className="mr-1" /> Not Verified
                             </p>
                         )}
@@ -588,8 +588,8 @@ export default function ProfilePage() {
                         </h3>
                         <p
                             className={`inline-block px-3 py-1 rounded-full text-sm ${user.is_active
-                                    ? "bg-green-100 text-green-600"
-                                    : "bg-red-100 text-red-600"
+                                ? "bg-green-100 text-green-600"
+                                : "bg-purple-100 text-purple-600"
                                 }`}
                         >
                             {user.is_active ? "Active" : "Inactive"}
@@ -713,8 +713,8 @@ export default function ProfilePage() {
                             <button
                                 onClick={() => setActiveTab("timeline")}
                                 className={`pb-1 ${activeTab === "timeline"
-                                        ? "text-blue-500 border-b-2 border-blue-500"
-                                        : "text-gray-500"
+                                    ? "text-blue-500 border-b-2 border-blue-500"
+                                    : "text-gray-500"
                                     }`}
                             >
                                 Timeline
@@ -722,8 +722,8 @@ export default function ProfilePage() {
                             <button
                                 onClick={() => setActiveTab("about")}
                                 className={`pb-1 ${activeTab === "about"
-                                        ? "text-blue-500 border-b-2 border-blue-500"
-                                        : "text-gray-500"
+                                    ? "text-blue-500 border-b-2 border-blue-500"
+                                    : "text-gray-500"
                                     }`}
                             >
                                 About

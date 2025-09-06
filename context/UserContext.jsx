@@ -21,7 +21,7 @@ export const UserProvider = ({ children }) => {
     }, []);
 
     const login = (loginData) => {
-        fetch('http://127.0.0.1:8000/auth/singin', {
+        fetch('https://smartstay-api-production.up.railway.app/auth/singin', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ export const UserProvider = ({ children }) => {
         }
 
         try {
-            fetch('http://127.0.0.1:8000/auth/singout', {
+            fetch('https://smartstay-api-production.up.railway.app/auth/singout', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -118,7 +118,7 @@ export const UserProvider = ({ children }) => {
     //     }
 
     //     try {
-    //         const res = await fetch(`http://127.0.0.1:8000/auth/refresh`, {
+    //         const res = await fetch(`https://smartstay-api-production.up.railway.app/auth/refresh`, {
     //             method: "POST",
     //             headers: {
     //                 "Content-Type": "application/json",
@@ -159,7 +159,7 @@ export const UserProvider = ({ children }) => {
 
     useEffect(() => {
         if (!user && sessionStorage.getItem("access")) {
-            fetch(`http://127.0.0.1:8000/auth/me`, {
+            fetch(`https://smartstay-api-production.up.railway.app/auth/me`, {
                 method: 'GET',
                 headers: {
                     'Content-Type': 'application/json',

@@ -94,7 +94,7 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                                                 : status === "pending"
                                                     ? "bg-orange-200 text-orange-700"
                                                     : status === "cancelled"
-                                                        ? "bg-red-100 text-red-700"
+                                                        ? "bg-purple-100 text-purple-700"
                                                         : "bg-gray-100 text-gray-700"
                                             }`}
                                     >
@@ -107,7 +107,7 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                                     <span
                                         className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${payment_status === "paid"
                                             ? "bg-green-100 text-green-700"
-                                            : "bg-red-100 text-red-700"
+                                            : "bg-purple-100 text-purple-700"
                                             }`}
                                     >
                                         {payment_status.charAt(0).toUpperCase() +

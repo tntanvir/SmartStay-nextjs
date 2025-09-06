@@ -10,7 +10,7 @@
 //     useEffect(() => {
 //         const fetchTransactions = async () => {
 //             try {
-//                 const res = await fetch('http://127.0.0.1:8000/payment/payment');
+//                 const res = await fetch('https://smartstay-api-production.up.railway.app/payment/payment');
 //                 const data = await res.json();
 //                 setTransactions(data.results.payments || []);
 //                 setTotal(data.results.total_transactions || 0);
@@ -112,7 +112,7 @@ const Transactions = () => {
     const [count, setCount] = useState(0);
     const [next, setNext] = useState(null);
     const [previous, setPrevious] = useState(null);
-    const [currentUrl, setCurrentUrl] = useState('http://127.0.0.1:8000/payment/payment');
+    const [currentUrl, setCurrentUrl] = useState('https://smartstay-api-production.up.railway.app/payment/payment');
 
     const fetchTransactions = async (url) => {
         setLoading(true);

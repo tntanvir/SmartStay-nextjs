@@ -59,7 +59,7 @@ const AllUsers = ({ users }) => {
                                     <AlertComponent id={user?.id} />
 
 
-                                    <button className="text-red-500 hover:text-red-700 cursor-pointer" title="Delete">
+                                    <button className="text-purple-500 hover:text-purple-700 cursor-pointer" title="Delete">
                                         <FiTrash size={18} />
                                     </button>
                                 </td>

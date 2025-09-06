@@ -55,7 +55,7 @@ const OTPVerify = () => {
         const data = { email, otp: otpValue };
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/auth/verify-otp', {
+            const response = await fetch('https://smartstay-api-production.up.railway.app/auth/verify-otp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -119,7 +119,7 @@ const OTPVerify = () => {
                     </div>
 
                     {/* Error Message */}
-                    {!isValid && <p className="text-red-500 text-sm mb-4">{errorMessage}</p>}
+                    {!isValid && <p className="text-purple-500 text-sm mb-4">{errorMessage}</p>}
 
                     {/* Submit Button */}
                     <button

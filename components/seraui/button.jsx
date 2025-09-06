@@ -80,7 +80,7 @@ const Button = React.forwardRef(
 
     const variantClasses = {
       default: "bg-slate-900 text-slate-50 hover:bg-slate-900/90 dark:bg-slate-50 dark:text-slate-900 dark:hover:bg-slate-50/90",
-      destructive: "bg-red-500 text-white hover:bg-red-600 dark:bg-red-600 dark:text-white dark:hover:bg-red-700",
+      destructive: "bg-purple-500 text-white hover:bg-purple-600 dark:bg-purple-600 dark:text-white dark:hover:bg-purple-700",
       outline: "border border-slate-200 bg-transparent hover:bg-slate-100 text-slate-900 dark:border-slate-800 dark:hover:bg-slate-800 dark:text-slate-50",
       secondary: "bg-slate-100 text-slate-900 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-50 dark:hover:bg-slate-700",
       ghost: "hover:bg-slate-100 text-slate-900 dark:hover:bg-slate-800 dark:text-slate-50",

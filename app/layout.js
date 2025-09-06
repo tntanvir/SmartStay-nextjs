@@ -32,7 +32,10 @@ export default function RootLayout({ children }) {
         <UserProvider>
           <Navber />
           <ToastContainer />
+
+
           {children}
+
         </UserProvider>
         <Footer />
       </body>

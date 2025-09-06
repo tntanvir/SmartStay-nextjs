@@ -36,7 +36,7 @@ const ChangePasswordForm = () => {
         const accessToken = sessionStorage.getItem('access');
 
         try {
-            const response = await fetch('http://127.0.0.1:8000/auth/change-password', {
+            const response = await fetch('https://smartstay-api-production.up.railway.app/auth/change-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

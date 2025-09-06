@@ -46,7 +46,7 @@ export default function AnalyticsPage() {
     }, []);
 
     useEffect(() => {
-        fetch("http://127.0.0.1:8000/analytics/analytics/", {
+        fetch("https://smartstay-api-production.up.railway.app/analytics/analytics/", {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ export default function AnalyticsPage() {
     if (error)
         return (
             <div className="flex items-center justify-center min-h-screen bg-gray-100">
-                <p className="text-red-600 text-xl">Error: {error}</p>
+                <p className="text-purple-600 text-xl">Error: {error}</p>
             </div>
         );
 
