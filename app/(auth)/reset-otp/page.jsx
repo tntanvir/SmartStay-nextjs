@@ -25,7 +25,7 @@ const ResetOtp = () => {
 
         setLoading(true);
         try {
-            const response = await fetch('https://smartstay-api-production.up.railway.app/auth/resend-otp', {
+            const response = await fetch('https://smartstay-api.up.railway.app/auth/resend-otp', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -86,7 +86,7 @@ const ResetOtp = () => {
                         {loading ? 'Sending...' : 'Resend OTP'}
                     </button>
                 </form>
-                <p className='w-full text-center pt-1'><Link className='text-sm hover:underline text-blue-600 w-full' href='/signin'>Go to Signin?</Link></p>
+                <p className='w-full text-center pt-1'><Link className='text-sm hover:underline text-purple-600 w-full' href='/signin'>Go to Signin?</Link></p>
             </div>
 
 

@@ -11,7 +11,7 @@ const Page = () => {
     const [prevPage, setPrevPage] = useState(null);
     const [loading, setLoading] = useState(true);
 
-    const fetchRooms = (url = 'https://smartstay-api-production.up.railway.app/room/rooms/') => {
+    const fetchRooms = (url = 'https://smartstay-api.up.railway.app/room/rooms/') => {
         setLoading(true);
         fetch(url, {
             method: 'GET',
@@ -35,7 +35,7 @@ const Page = () => {
 
     // const deleteRoom = (id) => {
     //     if (!confirm('Are you sure you want to delete this room?')) return;
-    //     fetch(`https://smartstay-api-production.up.railway.app/room/rooms/${id}`, {
+    //     fetch(`https://smartstay-api.up.railway.app/room/rooms/${id}`, {
     //         method: 'DELETE',
     //         headers: {
     //             'Content-Type': 'application/json',
@@ -60,7 +60,7 @@ const Page = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`https://smartstay-api-production.up.railway.app/room/rooms/${id}`, {
+                fetch(`https://smartstay-api.up.railway.app/room/rooms/${id}`, {
                     method: 'DELETE',
                     headers: {
                         'Content-Type': 'application/json',

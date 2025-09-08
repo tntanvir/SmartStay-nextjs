@@ -42,7 +42,7 @@
 
 //         console.log("Booking Data:", formattedDates)
 //         // alert(`Booking from ${formattedDates.start_date} to ${formattedDates.end_date}`)
-//         const url = `https://smartstay-api-production.up.railway.app/room/rooms/${id}/check-availability/?start_date=${formattedDates.start_date}&end_date=${formattedDates.end_date}`
+//         const url = `https://smartstay-api.up.railway.app/room/rooms/${id}/check-availability/?start_date=${formattedDates.start_date}&end_date=${formattedDates.end_date}`
 //         console.log(url)
 //         fetch(url)
 //             .then(res => res.json())
@@ -106,7 +106,7 @@
 //         }
 //         console.log(JSON.stringify(formattedDatesn))
 
-//         fetch(`https://smartstay-api-production.up.railway.app/booking/booking`, {
+//         fetch(`https://smartstay-api.up.railway.app/booking/booking`, {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
@@ -251,7 +251,7 @@ export default function RoomBookingSection({ id }) {
         }
 
         console.log("Booking Data:", formattedDates)
-        const url = `https://smartstay-api-production.up.railway.app/room/rooms/${id}/check-availability/?start_date=${formattedDates.start_date}&end_date=${formattedDates.end_date}`
+        const url = `https://smartstay-api.up.railway.app/room/rooms/${id}/check-availability/?start_date=${formattedDates.start_date}&end_date=${formattedDates.end_date}`
 
         try {
             const res = await fetch(url)
@@ -328,7 +328,7 @@ export default function RoomBookingSection({ id }) {
         }
 
         try {
-            const res = await fetch(`https://smartstay-api-production.up.railway.app/booking/booking`, {
+            const res = await fetch(`https://smartstay-api.up.railway.app/booking/booking`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -400,11 +400,11 @@ export default function RoomBookingSection({ id }) {
     return (
         <div className="relative">
             {/* Background decoration */}
-            <div className="absolute inset-0 bg-gradient-to-r from-purple-50/50 to-blue-50/50 rounded-3xl"></div>
+            <div className="absolute inset-0 bg-gradient-to-r from-purple-50/50 to-purple-50/50 rounded-3xl"></div>
 
             <div className="relative bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden">
                 {/* Header */}
-                <div className="bg-gradient-to-r from-purple-600 to-blue-600 px-8 py-6">
+                <div className="bg-gradient-to-r from-purple-600 to-purple-600 px-8 py-6">
                     <div className="flex items-center justify-between">
                         <div>
                             <h3 className="text-2xl font-bold text-white flex items-center gap-3">
@@ -444,7 +444,7 @@ export default function RoomBookingSection({ id }) {
                         {/* Check-out Date */}
                         <div className="space-y-3">
                             <label className="flex items-center gap-2 text-lg font-semibold text-slate-700">
-                                <FaCalendarAlt className="text-blue-500" />
+                                <FaCalendarAlt className="text-purple-500" />
                                 Check-out Date
                             </label>
                             <div className="relative">
@@ -453,7 +453,7 @@ export default function RoomBookingSection({ id }) {
                                     value={endDate}
                                     onChange={(e) => setEndDate(e.target.value)}
                                     min={startDate || new Date().toISOString().split('T')[0]}
-                                    className="w-full px-6 py-4 text-lg border-2 border-slate-200 rounded-2xl focus:border-blue-500 focus:ring-4 focus:ring-blue-500/20 transition-all duration-300 bg-slate-50 hover:bg-white"
+                                    className="w-full px-6 py-4 text-lg border-2 border-slate-200 rounded-2xl focus:border-purple-500 focus:ring-4 focus:ring-purple-500/20 transition-all duration-300 bg-slate-50 hover:bg-white"
                                 />
                             </div>
                         </div>
@@ -512,7 +512,7 @@ export default function RoomBookingSection({ id }) {
                             <button
                                 onClick={handleCheck}
                                 disabled={isLoading || !startDate || !endDate}
-                                className="flex-1 flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
+                                className="flex-1 flex items-center justify-center gap-3 px-8 py-4 bg-gradient-to-r from-purple-600 to-purple-600 text-white text-lg font-bold rounded-2xl shadow-lg hover:shadow-xl transform hover:scale-[1.02] transition-all duration-300 disabled:opacity-70 disabled:cursor-not-allowed disabled:transform-none"
                             >
                                 {isLoading ? (
                                     <>

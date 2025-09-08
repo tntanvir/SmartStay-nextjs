@@ -162,7 +162,7 @@ export default function ExploreCities() {
         <section className="relative w-full px-6 md:px-20 py-24 bg-gradient-to-br from-gray-50 via-white to-purple-50 overflow-hidden">
             {/* Background decorative elements */}
             <div className="absolute top-20 right-10 w-32 h-32 bg-purple-200 rounded-full opacity-10 blur-2xl"></div>
-            <div className="absolute bottom-20 left-10 w-24 h-24 bg-blue-200 rounded-full opacity-15 blur-xl"></div>
+            <div className="absolute bottom-20 left-10 w-24 h-24 bg-purple-200 rounded-full opacity-15 blur-xl"></div>
 
             {/* Header Section */}
             <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-16 relative z-10">
@@ -174,7 +174,7 @@ export default function ExploreCities() {
                         </span>
                     </div>
 
-                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-800 via-purple-600 to-blue-600 bg-clip-text text-transparent mb-4 leading-tight">
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-800 via-purple-600 to-purple-600 bg-clip-text text-transparent mb-4 leading-tight">
                         Explore The<br />Neighborhoods
                     </h2>
 
@@ -201,7 +201,7 @@ export default function ExploreCities() {
                     >
                         {/* Featured badge */}
                         {city.featured && (
-                            <div className="absolute top-6 left-6 z-20 bg-gradient-to-r from-purple-600 to-blue-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
+                            <div className="absolute top-6 left-6 z-20 bg-gradient-to-r from-purple-600 to-purple-600 text-white px-4 py-2 rounded-full text-sm font-semibold shadow-lg">
                                 Featured
                             </div>
                         )}

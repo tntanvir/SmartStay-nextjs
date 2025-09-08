@@ -5,7 +5,7 @@ import RooBooklist from './RooBooklist';
 
 const page = () => {
     const [data, setData] = useState(null);
-    const [urls, setUrls] = useState('https://smartstay-api-production.up.railway.app/booking/booking')
+    const [urls, setUrls] = useState('https://smartstay-api.up.railway.app/booking/booking')
     const [next, setNext] = useState(null);
     const [previous, setPrevious] = useState(null);
 

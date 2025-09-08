@@ -7,7 +7,7 @@ import { toast } from "react-toastify";
 
 export default function PropertyCard({ image, title, location, bed, bath, sqft, price, id, total_bookings }) {
     const AddMYFavorites = (id) => {
-        fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/`, {
+        fetch(`https://smartstay-api.up.railway.app/favorites/favorites/`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',

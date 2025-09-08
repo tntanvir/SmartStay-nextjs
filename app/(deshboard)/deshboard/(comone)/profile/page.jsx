@@ -61,7 +61,7 @@
 //         const accessToken = sessionStorage.getItem('access');
 
 //         try {
-//             const response = await fetch('https://smartstay-api-production.up.railway.app/auth/change-password', {
+//             const response = await fetch('https://smartstay-api.up.railway.app/auth/change-password', {
 //                 method: 'POST',
 //                 headers: {
 //                     'Content-Type': 'application/json',
@@ -89,7 +89,7 @@
 
 
 //     const updateUser = () => {
-//         fetch(`https://smartstay-api-production.up.railway.app/auth/me`, {
+//         fetch(`https://smartstay-api.up.railway.app/auth/me`, {
 //             method: "PATCH",
 //             headers: {
 //                 "Content-Type": "application/json",
@@ -126,7 +126,7 @@
 //                         <img
 //                             src={user?.profile}
 //                             alt={user?.name}
-//                             className="w-40 h-40 object-cover rounded-full border-4 border-blue-100"
+//                             className="w-40 h-40 object-cover rounded-full border-4 border-purple-100"
 //                         />
 //                         <h2 className="mt-4 font-bold text-lg text-gray-800">
 //                             {user.name || "No Name"}
@@ -145,7 +145,7 @@
 //                         <AlertDialog>
 //                             <AlertDialogTrigger asChild>
 //                                 {/* <Button variant="outline">Change Password</Button> */}
-//                                 <small className="text-blue-500 mt-2 cursor-pointer">Change Password</small>
+//                                 <small className="text-purple-500 mt-2 cursor-pointer">Change Password</small>
 //                             </AlertDialogTrigger>
 //                             <AlertDialogContent>
 //                                 <AlertDialogHeader>
@@ -209,7 +209,7 @@
 //                                 <h1 className="text-2xl font-bold text-gray-800">
 //                                     {user.name || "Unnamed"}
 //                                 </h1>
-//                                 <p className="text-blue-500 capitalize">{user.role}</p>
+//                                 <p className="text-purple-500 capitalize">{user.role}</p>
 //                                 <p className="flex items-center text-gray-500 text-sm mt-1">
 //                                     <FaMapMarkerAlt className="w-4 h-4 mr-1" />
 //                                     {user.address || "No Address"}
@@ -296,7 +296,7 @@
 //                             <button className="px-4 py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200">
 //                                 Send Message
 //                             </button>
-//                             <button className="px-4 py-2 bg-blue-500 rounded-lg text-white hover:bg-blue-600">
+//                             <button className="px-4 py-2 bg-purple-500 rounded-lg text-white hover:bg-purple-600">
 //                                 Contacts
 //                             </button>
 //                             <button className="px-4 py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200">
@@ -311,7 +311,7 @@
 //                             <button
 //                                 onClick={() => setActiveTab("timeline")}
 //                                 className={`pb-1 ${activeTab === "timeline"
-//                                     ? "text-blue-500 border-b-2 border-blue-500"
+//                                     ? "text-purple-500 border-b-2 border-purple-500"
 //                                     : "text-gray-500"
 //                                     }`}
 //                             >
@@ -320,7 +320,7 @@
 //                             <button
 //                                 onClick={() => setActiveTab("about")}
 //                                 className={`pb-1 ${activeTab === "about"
-//                                     ? "text-blue-500 border-b-2 border-blue-500"
+//                                     ? "text-purple-500 border-b-2 border-purple-500"
 //                                     : "text-gray-500"
 //                                     }`}
 //                             >
@@ -336,15 +336,15 @@
 //                                     </h3>
 //                                     <ul className="space-y-2 text-sm text-gray-600">
 //                                         <li className="flex items-center">
-//                                             <FaPhone className="w-4 h-4 mr-2 text-blue-500" />
+//                                             <FaPhone className="w-4 h-4 mr-2 text-purple-500" />
 //                                             {user.phone || "Not added"}
 //                                         </li>
 //                                         <li className="flex items-center">
-//                                             <FaMapMarkerAlt className="w-4 h-4 mr-2 text-blue-500" />
+//                                             <FaMapMarkerAlt className="w-4 h-4 mr-2 text-purple-500" />
 //                                             {user.address || "Not added"}
 //                                         </li>
 //                                         <li className="flex items-center">
-//                                             <FaEnvelope className="w-4 h-4 mr-2 text-blue-500" />
+//                                             <FaEnvelope className="w-4 h-4 mr-2 text-purple-500" />
 //                                             {user.email}
 //                                         </li>
 //                                     </ul>
@@ -446,7 +446,7 @@ export default function ProfilePage() {
 
         try {
             const response = await fetch(
-                "https://smartstay-api-production.up.railway.app/auth/change-password",
+                "https://smartstay-api.up.railway.app/auth/change-password",
                 {
                     method: "POST",
                     headers: {
@@ -472,7 +472,7 @@ export default function ProfilePage() {
     };
 
     const updateUser = () => {
-        fetch(`https://smartstay-api-production.up.railway.app/auth/me`, {
+        fetch(`https://smartstay-api.up.railway.app/auth/me`, {
             method: "PATCH",
             headers: {
                 "Content-Type": "application/json",
@@ -509,7 +509,7 @@ export default function ProfilePage() {
                         <img
                             src={user?.profile}
                             alt={user?.name}
-                            className="w-40 h-40 object-cover rounded-full border-4 border-blue-100"
+                            className="w-40 h-40 object-cover rounded-full border-4 border-purple-100"
                         />
                         <h2 className="mt-4 font-bold text-lg text-gray-800">
                             {user.name || "No Name"}
@@ -527,7 +527,7 @@ export default function ProfilePage() {
 
                         <AlertDialog>
                             <AlertDialogTrigger asChild>
-                                <small className="text-blue-500 mt-2 cursor-pointer">
+                                <small className="text-purple-500 mt-2 cursor-pointer">
                                     Change Password
                                 </small>
                             </AlertDialogTrigger>
@@ -605,7 +605,7 @@ export default function ProfilePage() {
                                 <h1 className="text-2xl font-bold text-gray-800">
                                     {user.name || "Unnamed"}
                                 </h1>
-                                <p className="text-blue-500 capitalize">
+                                <p className="text-purple-500 capitalize">
                                     {user.role}
                                 </p>
                                 <p className="flex items-center text-gray-500 text-sm mt-1">
@@ -698,7 +698,7 @@ export default function ProfilePage() {
                             <button className="px-4 py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200">
                                 Send Message
                             </button>
-                            <button className="px-4 py-2 bg-blue-500 rounded-lg text-white hover:bg-blue-600">
+                            <button className="px-4 py-2 bg-purple-500 rounded-lg text-white hover:bg-purple-600">
                                 Contacts
                             </button>
                             <button className="px-4 py-2 bg-gray-100 rounded-lg text-gray-700 hover:bg-gray-200">
@@ -713,7 +713,7 @@ export default function ProfilePage() {
                             <button
                                 onClick={() => setActiveTab("timeline")}
                                 className={`pb-1 ${activeTab === "timeline"
-                                    ? "text-blue-500 border-b-2 border-blue-500"
+                                    ? "text-purple-500 border-b-2 border-purple-500"
                                     : "text-gray-500"
                                     }`}
                             >
@@ -722,7 +722,7 @@ export default function ProfilePage() {
                             <button
                                 onClick={() => setActiveTab("about")}
                                 className={`pb-1 ${activeTab === "about"
-                                    ? "text-blue-500 border-b-2 border-blue-500"
+                                    ? "text-purple-500 border-b-2 border-purple-500"
                                     : "text-gray-500"
                                     }`}
                             >
@@ -738,15 +738,15 @@ export default function ProfilePage() {
                                     </h3>
                                     <ul className="space-y-2 text-sm text-gray-600">
                                         <li className="flex items-center">
-                                            <FaPhone className="w-4 h-4 mr-2 text-blue-500" />
+                                            <FaPhone className="w-4 h-4 mr-2 text-purple-500" />
                                             {user.phone || "Not added"}
                                         </li>
                                         <li className="flex items-center">
-                                            <FaMapMarkerAlt className="w-4 h-4 mr-2 text-blue-500" />
+                                            <FaMapMarkerAlt className="w-4 h-4 mr-2 text-purple-500" />
                                             {user.address || "Not added"}
                                         </li>
                                         <li className="flex items-center">
-                                            <FaEnvelope className="w-4 h-4 mr-2 text-blue-500" />
+                                            <FaEnvelope className="w-4 h-4 mr-2 text-purple-500" />
                                             {user.email}
                                         </li>
                                     </ul>

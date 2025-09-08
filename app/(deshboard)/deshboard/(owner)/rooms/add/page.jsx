@@ -49,7 +49,7 @@ const RoomAdd = () => {
 
         try {
             const accessToken = sessionStorage.getItem("access");
-            const res = await fetch("https://smartstay-api-production.up.railway.app/room/rooms/", {
+            const res = await fetch("https://smartstay-api.up.railway.app/room/rooms/", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

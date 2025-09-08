@@ -36,7 +36,7 @@ const ChangePasswordForm = () => {
         const accessToken = sessionStorage.getItem('access');
 
         try {
-            const response = await fetch('https://smartstay-api-production.up.railway.app/auth/change-password', {
+            const response = await fetch('https://smartstay-api.up.railway.app/auth/change-password', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -69,7 +69,7 @@ const ChangePasswordForm = () => {
                 <input
                     type="password"
                     id="oldPassword"
-                    className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
                     value={oldPassword}
                     onChange={(e) => setOldPassword(e.target.value)}
                     required
@@ -81,7 +81,7 @@ const ChangePasswordForm = () => {
                 <input
                     type="password"
                     id="newPassword"
-                    className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
                     value={newPassword}
                     onChange={(e) => setNewPassword(e.target.value)}
                     required
@@ -93,7 +93,7 @@ const ChangePasswordForm = () => {
                 <input
                     type="password"
                     id="confirmPassword"
-                    className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:ring-blue-500 focus:border-blue-500"
+                    className="w-full px-3 py-2 mt-1 border border-gray-300 rounded-md focus:ring-purple-500 focus:border-purple-500"
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     required
@@ -103,13 +103,13 @@ const ChangePasswordForm = () => {
             <div className="mb-4 text-center">
                 <button
                     type="submit"
-                    className="w-full px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 focus:ring-2 focus:ring-blue-400"
+                    className="w-full px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600 focus:ring-2 focus:ring-purple-400"
                 >
                     Change Password
                 </button>
             </div>
             <p className='w-full text-center'>
-                <Link className='text-sm hover:underline text-blue-600 w-full' href='/signin'>
+                <Link className='text-sm hover:underline text-purple-600 w-full' href='/signin'>
                     Go to Signin?
                 </Link>
             </p>

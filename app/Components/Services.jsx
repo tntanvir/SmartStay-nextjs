@@ -20,7 +20,7 @@
 //     // Fetch data
 //     const fetchData = (url) => {
 //         try {
-//             let fetchUrl = url || 'https://smartstay-api-production.up.railway.app/room/rooms/';
+//             let fetchUrl = url || 'https://smartstay-api.up.railway.app/room/rooms/';
 
 //             // If queryString is present, append it to the URL
 //             if (queryString) {
@@ -90,7 +90,7 @@
 
 
 //     const AddMYFavorites = (id) => {
-//         fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/`, {
+//         fetch(`https://smartstay-api.up.railway.app/favorites/favorites/`, {
 //             method: 'POST',
 //             headers: {
 //                 'Content-Type': 'application/json',
@@ -200,7 +200,7 @@
 //                 <button
 //                     onClick={handlePreviousPage}
 //                     disabled={!previousPage}
-//                     className={`px-4 py-2 border rounded-md text-gray-500 cursor-pointer disabled:opacity-50 ${!previousPage ? 'bg-gray-200' : 'text-white bg-blue-500 hover:bg-blue-600'}`}
+//                     className={`px-4 py-2 border rounded-md text-gray-500 cursor-pointer disabled:opacity-50 ${!previousPage ? 'bg-gray-200' : 'text-white bg-purple-500 hover:bg-purple-600'}`}
 //                 >
 //                     Previous
 //                 </button>
@@ -248,7 +248,7 @@
 //     const fetchData = (url) => {
 //         setLoading(true);
 //         try {
-//             let fetchUrl = url || 'https://smartstay-api-production.up.railway.app/room/rooms/';
+//             let fetchUrl = url || 'https://smartstay-api.up.railway.app/room/rooms/';
 
 //             if (queryString) {
 //                 fetchUrl = `${fetchUrl}?${queryString}`;
@@ -311,7 +311,7 @@
 //     const AddMYFavorites = async (id) => {
 //         setLoadingFavorite(id);
 //         try {
-//             const response = await fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/`, {
+//             const response = await fetch(`https://smartstay-api.up.railway.app/favorites/favorites/`, {
 //                 method: 'POST',
 //                 headers: {
 //                     'Content-Type': 'application/json',
@@ -376,7 +376,7 @@
 //                         <button
 //                             onClick={() => setView('grid')}
 //                             className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 ${view === 'grid'
-//                                 ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md'
+//                                 ? 'bg-gradient-to-r from-purple-500 to-purple-500 text-white shadow-md'
 //                                 : 'text-slate-600 hover:text-purple-600 hover:bg-slate-50'
 //                                 }`}
 //                         >
@@ -386,7 +386,7 @@
 //                         <button
 //                             onClick={() => setView('list')}
 //                             className={`flex items-center gap-2 px-4 py-2 rounded-xl font-medium transition-all duration-300 ${view === 'list'
-//                                 ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white shadow-md'
+//                                 ? 'bg-gradient-to-r from-purple-500 to-purple-500 text-white shadow-md'
 //                                 : 'text-slate-600 hover:text-purple-600 hover:bg-slate-50'
 //                                 }`}
 //                         >
@@ -452,7 +452,7 @@
 //                                     {/* Price Badge */}
 //                                     <div className="absolute bottom-4 left-4">
 //                                         <div className="px-4 py-2 bg-white/95 backdrop-blur-sm rounded-xl shadow-lg">
-//                                             <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+//                                             <span className="text-xl font-bold bg-gradient-to-r from-purple-600 to-purple-600 bg-clip-text text-transparent">
 //                                                 ${property.price}
 //                                             </span>
 //                                             <span className="text-slate-600 text-sm ml-1">/night</span>
@@ -491,8 +491,8 @@
 //                                                 <span>{property.bed}</span>
 //                                             </div>
 //                                             <div className="flex items-center gap-2 text-sm text-slate-600">
-//                                                 <div className="p-2 bg-blue-100 rounded-lg">
-//                                                     <FaBath className="w-3 h-3 text-blue-600" />
+//                                                 <div className="p-2 bg-purple-100 rounded-lg">
+//                                                     <FaBath className="w-3 h-3 text-purple-600" />
 //                                                 </div>
 //                                                 <span>{property.bath}</span>
 //                                             </div>
@@ -508,7 +508,7 @@
 //                                     {/* Action Button */}
 //                                     <div className="pt-4 border-t border-slate-100">
 //                                         <Link href={`/room/${property.id}`}>
-//                                             <button className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-[1.02]">
+//                                             <button className="w-full flex items-center justify-center gap-2 py-3 px-4 bg-gradient-to-r from-purple-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-[1.02]">
 //                                                 <FaEye className="w-4 h-4" />
 //                                                 View Details
 //                                             </button>
@@ -532,7 +532,7 @@
 //                             Previous
 //                         </button>
 
-//                         <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-blue-100 rounded-xl">
+//                         <div className="flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-100 to-purple-100 rounded-xl">
 //                             <span className="text-sm font-medium text-slate-700">
 //                                 Page {currentPage}
 //                             </span>
@@ -585,7 +585,7 @@ const Services = () => {
     const fetchData = (url) => {
         setLoading(true);
         try {
-            let fetchUrl = url || 'https://smartstay-api-production.up.railway.app/room/rooms/';
+            let fetchUrl = url || 'https://smartstay-api.up.railway.app/room/rooms/';
 
             if (queryString) {
                 fetchUrl = `${fetchUrl}?${queryString}`;
@@ -648,7 +648,7 @@ const Services = () => {
     const AddMYFavorites = async (id) => {
         setLoadingFavorite(id);
         try {
-            const response = await fetch(`https://smartstay-api-production.up.railway.app/favorites/favorites/`, {
+            const response = await fetch(`https://smartstay-api.up.railway.app/favorites/favorites/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -686,7 +686,7 @@ const Services = () => {
 
     return (
         <div className="min-h-screen bg-slate-50">
-            <div className="max-w-7xl mx-auto p-6">
+            <div className="max-w-7xl mx-auto md:p-6">
                 {/* Header Section */}
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 mb-8">
                     <div>
@@ -768,7 +768,7 @@ const Services = () => {
                                                 <span>{property.bed}</span>
                                             </div>
                                             <div className="flex items-center gap-2 text-sm text-slate-600">
-                                                <FaBath className="w-4 h-4 text-blue-600" />
+                                                <FaBath className="w-4 h-4 text-purple-600" />
                                                 <span>{property.bath}</span>
                                             </div>
                                             <div className="flex items-center gap-2 text-sm text-slate-600">

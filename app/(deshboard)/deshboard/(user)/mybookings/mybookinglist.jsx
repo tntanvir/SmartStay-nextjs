@@ -119,13 +119,13 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
 
                                     {/* <button
                                         onClick={() => console.log(id)}
-                                        className="text-blue-600 hover:text-blue-800"
+                                        className="text-purple-600 hover:text-purple-800"
                                         title="Edit"
                                     >
                                         pay now
                                     </button> */}
                                     <Button variant="outline" disabled={payment_status !== "unpaid"}>
-                                        <Link className="text-blue-600 hover:text-blue-800 flex justify-center items-center gap-1.5" href={`/deshboard/checkout/${id}`}>
+                                        <Link className="text-purple-600 hover:text-purple-800 flex justify-center items-center gap-1.5" href={`/deshboard/checkout/${id}`}>
                                             <MdOutlinePayments />
                                             pay now
                                         </Link>
@@ -142,7 +142,7 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                 <button
                     onClick={() => setUrls(previous)}
                     disabled={!previous}
-                    className={`px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${!previous && "opacity-50 cursor-not-allowed"
+                    className={`px-4 py-2 text-sm font-semibold text-white bg-purple-600 rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${!previous && "opacity-50 cursor-not-allowed"
                         }`}
                 >
                     Previous
@@ -150,7 +150,7 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                 <button
                     onClick={() => setUrls(next)}
                     disabled={!next}
-                    className={`px-4 py-2 text-sm font-semibold text-white bg-blue-600 rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${!next && "opacity-50 cursor-not-allowed"
+                    className={`px-4 py-2 text-sm font-semibold text-white bg-purple-600 rounded-md shadow-sm hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2 ${!next && "opacity-50 cursor-not-allowed"
                         }`}
                 >
                     Next

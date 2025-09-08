@@ -8,7 +8,7 @@
 //     const [loading, setLoading] = useState(true);
 
 //     useEffect(() => {
-//         fetch('https://smartstay-api-production.up.railway.app/room/rooms/latest')
+//         fetch('https://smartstay-api.up.railway.app/room/rooms/latest')
 //             .then(response => response.json())
 //             .then(data => {
 //                 setRoom(data);
@@ -73,7 +73,7 @@ const MostRecentRoom = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://smartstay-api-production.up.railway.app/room/rooms/latest')
+        fetch('https://smartstay-api.up.railway.app/room/rooms/latest')
             .then(response => response.json())
             .then(data => {
                 setRoom(data);

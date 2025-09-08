@@ -30,7 +30,7 @@ function CheckoutForm() {
         setLoading(true);
 
         try {
-            const res = await fetch('https://smartstay-api-production.up.railway.app/payment/payment', {
+            const res = await fetch('https://smartstay-api.up.railway.app/payment/payment', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -49,6 +49,8 @@ function CheckoutForm() {
                     billing_details: { email, name },
                 },
             });
+
+            console.log(paymentIntent);
 
             if (error) {
                 alert(error.message);

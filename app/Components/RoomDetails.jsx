@@ -12,7 +12,7 @@
 
 
 // //     return (
-// //         <section className="max-w-7xl mx-auto px-6 py-16 bg-gradient-to-r from-blue-50 via-purple-50 to-pink-50">
+// //         <section className="max-w-7xl mx-auto px-6 py-16 bg-gradient-to-r from-purple-50 via-purple-50 to-pink-50">
 // //             {/* Property Image Carousel */}
 // //             <div className="relative mb-10 rounded-3xl overflow-hidden shadow-2xl">
 // //                 <div className="flex gap-4">
@@ -55,7 +55,7 @@
 // //                     <span>{data.bed} Beds</span>
 // //                 </div>
 // //                 <div className="flex items-center gap-6 text-lg">
-// //                     <FaBath className="w-6 h-6 text-blue-600" />
+// //                     <FaBath className="w-6 h-6 text-purple-600" />
 // //                     <span>{data.bath} Baths</span>
 // //                 </div>
 // //                 <div className="flex items-center gap-6 text-lg">
@@ -182,7 +182,7 @@
 //                             {/* Price Badge */}
 //                             <div className="absolute bottom-6 right-6 z-20">
 //                                 <div className="px-6 py-3 rounded-2xl backdrop-blur-md bg-white/95 border border-white/50 shadow-xl">
-//                                     <span className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+//                                     <span className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-purple-600 bg-clip-text text-transparent">
 //                                         ${data.price}
 //                                     </span>
 //                                     <span className="text-slate-600 ml-1">/ night</span>
@@ -239,11 +239,11 @@
 //                                 <div className="bg-white rounded-3xl p-8 shadow-lg border border-slate-100 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
 //                                     <div className="flex items-center justify-between">
 //                                         <div>
-//                                             <div className="p-4 rounded-2xl bg-gradient-to-br from-blue-100 to-blue-200 w-fit mb-4">
-//                                                 <FaBath className="w-8 h-8 text-blue-600" />
+//                                             <div className="p-4 rounded-2xl bg-gradient-to-br from-purple-100 to-purple-200 w-fit mb-4">
+//                                                 <FaBath className="w-8 h-8 text-purple-600" />
 //                                             </div>
 //                                             <h3 className="text-2xl font-bold text-slate-800 mb-2">Bathrooms</h3>
-//                                             <p className="text-4xl font-black text-blue-600">{data.bath}</p>
+//                                             <p className="text-4xl font-black text-purple-600">{data.bath}</p>
 //                                         </div>
 //                                     </div>
 //                                 </div>
@@ -269,11 +269,11 @@
 //                     <div className="mb-16">
 //                         <div className="bg-white rounded-3xl p-10 shadow-lg border border-slate-100 relative overflow-hidden">
 //                             {/* Decorative Element */}
-//                             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-blue-100 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
+//                             <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-purple-100 to-purple-100 rounded-full -translate-y-16 translate-x-16 opacity-50"></div>
 
 //                             <div className="relative">
 //                                 <div className="flex items-center gap-4 mb-6">
-//                                     <div className="w-1 h-12 bg-gradient-to-b from-purple-500 to-blue-500 rounded-full"></div>
+//                                     <div className="w-1 h-12 bg-gradient-to-b from-purple-500 to-purple-500 rounded-full"></div>
 //                                     <h2 className="text-4xl font-bold text-slate-800">About This Property</h2>
 //                                 </div>
 //                                 <p className="text-xl text-slate-600 leading-relaxed">
@@ -336,7 +336,7 @@
 
 //                     {/* Booking Section */}
 //                     {user && (
-//                         <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-3xl p-2 shadow-lg border border-purple-100">
+//                         <div className="bg-gradient-to-r from-purple-50 to-purple-50 rounded-3xl p-2 shadow-lg border border-purple-100">
 //                             <div className="bg-white rounded-2xl p-8">
 //                                 <RoomBookingSection id={data.id} />
 //                             </div>
@@ -447,7 +447,7 @@ const RoomDetails = ({ data }) => {
                             {/* Price Badge */}
                             <div className="absolute bottom-6 right-6 z-20">
                                 <div className="px-4 py-2 rounded-xl backdrop-blur-md bg-white/95 border border-white/50 shadow-lg">
-                                    <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+                                    <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-600 bg-clip-text text-transparent">
                                         ${data.price}
                                     </span>
                                     <span className="text-slate-600 text-sm ml-1">/ night</span>
@@ -504,11 +504,11 @@ const RoomDetails = ({ data }) => {
                                 <div className="bg-white rounded-2xl p-6 shadow-lg border border-slate-100 hover:shadow-xl transition-all duration-500 hover:-translate-y-1">
                                     <div className="flex items-center justify-between">
                                         <div>
-                                            <div className="p-3 rounded-xl bg-gradient-to-br from-blue-100 to-blue-200 w-fit mb-3">
-                                                <FaBath className="w-6 h-6 text-blue-600" />
+                                            <div className="p-3 rounded-xl bg-gradient-to-br from-purple-100 to-purple-200 w-fit mb-3">
+                                                <FaBath className="w-6 h-6 text-purple-600" />
                                             </div>
                                             <h3 className="text-lg font-bold text-slate-800 mb-1">Bathrooms</h3>
-                                            <p className="text-3xl font-black text-blue-600">{data.bath}</p>
+                                            <p className="text-3xl font-black text-purple-600">{data.bath}</p>
                                         </div>
                                     </div>
                                 </div>
@@ -534,11 +534,11 @@ const RoomDetails = ({ data }) => {
                     <div className="mb-12">
                         <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100 relative overflow-hidden">
                             {/* Decorative Element */}
-                            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-100 to-blue-100 rounded-full -translate-y-12 translate-x-12 opacity-50"></div>
+                            <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-100 to-purple-100 rounded-full -translate-y-12 translate-x-12 opacity-50"></div>
 
                             <div className="relative">
                                 <div className="flex items-center gap-3 mb-4">
-                                    <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-blue-500 rounded-full"></div>
+                                    <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-purple-500 rounded-full"></div>
                                     <h2 className="text-2xl font-bold text-slate-800">About This Property</h2>
                                 </div>
                                 <p className="text-base text-slate-600 leading-relaxed">
@@ -603,7 +603,7 @@ const RoomDetails = ({ data }) => {
                     <div className="mb-12">
                         <div className="bg-white rounded-2xl p-8 shadow-lg border border-slate-100">
                             <div className="flex items-center gap-3 mb-8">
-                                <div className="w-1 h-8 bg-gradient-to-b from-blue-500 to-purple-500 rounded-full"></div>
+                                <div className="w-1 h-8 bg-gradient-to-b from-purple-500 to-purple-500 rounded-full"></div>
                                 <h3 className="text-2xl font-bold text-slate-800">Guest Reviews</h3>
                                 <div className="ml-auto flex items-center gap-2 bg-yellow-50 px-3 py-1 rounded-full">
                                     <FaStar className="text-yellow-400 w-4 h-4" />
@@ -645,7 +645,7 @@ const RoomDetails = ({ data }) => {
 
                             {/* View All Reviews Button */}
                             <div className="text-center mt-8">
-                                <button className="px-6 py-3 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 font-semibold rounded-xl hover:from-purple-200 hover:to-blue-200 transition-all duration-300 border border-purple-200">
+                                <button className="px-6 py-3 bg-gradient-to-r from-purple-100 to-purple-100 text-purple-700 font-semibold rounded-xl hover:from-purple-200 hover:to-purple-200 transition-all duration-300 border border-purple-200">
                                     View All 120 Reviews
                                 </button>
                             </div>
@@ -654,7 +654,7 @@ const RoomDetails = ({ data }) => {
 
                     {/* Booking Section */}
                     {user && (
-                        <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-2 shadow-lg border border-purple-100">
+                        <div className="bg-gradient-to-r from-purple-50 to-purple-50 rounded-2xl p-2 shadow-lg border border-purple-100">
                             <div className="bg-white rounded-xl">
                                 <RoomBookingSection id={data.id} />
                             </div>

@@ -99,7 +99,7 @@ const DeshboardSidebar = () => {
                 ) : (
                     <button
                         onClick={() => setIsOpen(!isOpen)}
-                        className="text-2xl text-purple-600 cursor-pointer font-bold"
+                        className="text-2xl text-purple-600 cursor-pointer font-bold w-full"
                     >
                         D
                     </button>

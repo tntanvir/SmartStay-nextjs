@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 
 const roleColors = {
-    user: 'bg-blue-100 text-blue-800',
+    user: 'bg-purple-100 text-purple-800',
     admin: 'bg-pink-100 text-pink-800',
 };
 
@@ -53,7 +53,7 @@ const AllUsers = ({ users }) => {
 
 
                                 <td className="px-4 py-4 flex justify-end gap-3">
-                                    {/* <button className="text-blue-500 hover:text-blue-700 cursor-pointer" title="Update">
+                                    {/* <button className="text-purple-500 hover:text-purple-700 cursor-pointer" title="Update">
                                         <FiEdit size={18} />
                                     </button> */}
                                     <AlertComponent id={user?.id} />

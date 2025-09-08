@@ -10,7 +10,7 @@
 //     useEffect(() => {
 //         const fetchTransactions = async () => {
 //             try {
-//                 const res = await fetch('https://smartstay-api-production.up.railway.app/payment/payment');
+//                 const res = await fetch('https://smartstay-api.up.railway.app/payment/payment');
 //                 const data = await res.json();
 //                 setTransactions(data.results.payments || []);
 //                 setTotal(data.results.total_transactions || 0);
@@ -33,7 +33,7 @@
 //             case 'usd':
 //                 return 'bg-green-100 text-green-800';
 //             case 'cad':
-//                 return 'bg-blue-100 text-blue-800';
+//                 return 'bg-purple-100 text-purple-800';
 //             case 'eur':
 //                 return 'bg-purple-100 text-purple-800';
 //             case 'gbp':
@@ -112,7 +112,7 @@ const Transactions = () => {
     const [count, setCount] = useState(0);
     const [next, setNext] = useState(null);
     const [previous, setPrevious] = useState(null);
-    const [currentUrl, setCurrentUrl] = useState('https://smartstay-api-production.up.railway.app/payment/payment');
+    const [currentUrl, setCurrentUrl] = useState('https://smartstay-api.up.railway.app/payment/payment');
 
     const fetchTransactions = async (url) => {
         setLoading(true);
@@ -145,7 +145,7 @@ const Transactions = () => {
             case 'usd':
                 return 'bg-green-100 text-green-800';
             case 'cad':
-                return 'bg-blue-100 text-blue-800';
+                return 'bg-purple-100 text-purple-800';
             case 'eur':
                 return 'bg-purple-100 text-purple-800';
             case 'gbp':

@@ -9,7 +9,7 @@ const PopularRoom = () => {
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch('https://smartstay-api-production.up.railway.app/room/rooms/most-booked')
+        fetch('https://smartstay-api.up.railway.app/room/rooms/most-booked')
             .then(response => response.json())
             .then(data => {
                 setRoom(data);

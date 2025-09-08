@@ -21,7 +21,7 @@ export default function AlertComponent({ id }) {
   const [status, setStatus] = useState(false);
 
   useEffect(() => {
-    fetch(`https://smartstay-api-production.up.railway.app/auth/update-status/${id}`, {
+    fetch(`https://smartstay-api.up.railway.app/auth/update-status/${id}`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -38,7 +38,7 @@ export default function AlertComponent({ id }) {
 
 
   const handleStatusChange = () => {
-    fetch(`https://smartstay-api-production.up.railway.app/auth/update-status/${id}`, {
+    fetch(`https://smartstay-api.up.railway.app/auth/update-status/${id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json',
@@ -59,7 +59,7 @@ export default function AlertComponent({ id }) {
   return (
     <AlertDialog>
       <AlertDialogTrigger asChild>
-        <Button variant="ghost" className="text-blue-500 hover:text-blue-700 cursor-pointer">
+        <Button variant="ghost" className="text-purple-500 hover:text-purple-700 cursor-pointer">
           <FiEdit size={18} />
         </Button>
       </AlertDialogTrigger>

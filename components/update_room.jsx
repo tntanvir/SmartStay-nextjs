@@ -20,7 +20,7 @@ export default function UpdateRoomData({ id }) {
     const [formData, setFormData] = useState({});
 
     const loadData = (id) => {
-        fetch(`https://smartstay-api-production.up.railway.app/room/rooms/${id}`, {
+        fetch(`https://smartstay-api.up.railway.app/room/rooms/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
@@ -41,7 +41,7 @@ export default function UpdateRoomData({ id }) {
     };
 
     const handleUpdate = () => {
-        fetch(`https://smartstay-api-production.up.railway.app/room/rooms/${id}`, {
+        fetch(`https://smartstay-api.up.railway.app/room/rooms/${id}`, {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json',

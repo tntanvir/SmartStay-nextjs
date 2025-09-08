@@ -1,113 +1,3 @@
-// 'use client'
-
-// import { useState } from 'react'
-// import Link from 'next/link'
-// import { FiMenu, FiX } from 'react-icons/fi'
-// import { usePathname } from 'next/navigation'
-// import { useUser } from '@/context/UserContext'
-// import Dropdown from '@/components/ui/dropdown'
-
-// export default function Navber() {
-//     const [isOpen, setIsOpen] = useState(false)
-//     const { user } = useUser()
-//     const toggleMenu = () => setIsOpen(!isOpen)
-//     const router = usePathname()
-
-//     const isSignInOrSignUp = router === '/signin' || router === '/signup' || router === '/otp-varify' || router === '/reset-otp' || router === '/forgot-password' || router.startsWith('/deshboard')
-//     // console.log(router)
-
-//     if (isSignInOrSignUp) {
-//         return null
-//     }
-
-//     const links = [
-//         { href: '/', label: 'Home' },
-//         { href: '/about', label: 'About' },
-//         { href: '/services', label: 'Services' },
-//         { href: '/contact', label: 'Contact' },
-//     ]
-
-
-//     return (
-//         <nav className="bg-white bg-opacity-30 backdrop-blur-lg shadow-lg  w-full sticky top-0 z-50 transition-all duration-500 ease-in-out">
-//             <div className="max-w-7xl mx-auto px-6 py-2.5 flex items-center justify-between">
-//                 {/* Logo */}
-//                 <Link href="/" className="text-3xl font-bold text-purple-600  transition duration-300 ease-in-out">
-//                     SmartStay
-//                 </Link>
-
-//                 {/* Desktop Menu */}
-//                 <div className="hidden md:flex space-x-10 justify-center items-center">
-//                     {links.map((link) => (
-//                         <Link
-//                             key={link.href}
-//                             href={link.href}
-//                             className="text-black hover:text-purple-600 font-semibold transition duration-300 ease-in-out"
-//                         >
-//                             {link.label}
-//                         </Link>
-//                     ))}
-
-//                     {user ?
-
-//                         <div className="w-full">
-
-//                             <Dropdown user={user} />
-//                             {console.log(user?.profile)}
-
-//                         </div>
-
-//                         :
-//                         <Link
-//                             href="/signin"
-//                             className="text-black bg-yellow-500 hover:bg-yellow-600 py-2 px-6 rounded-md font-medium transition duration-300 ease-in-out"
-//                         >
-//                             Singin
-//                         </Link>
-//                     }
-//                 </div>
-
-//                 {/* Mobile Icon */}
-//                 <div className="md:hidden">
-//                     <button onClick={toggleMenu} className="text-3xl text-black">
-//                         {isOpen ? <FiX /> : <FiMenu />}
-//                     </button>
-//                 </div>
-//             </div>
-
-//             {/* Mobile Menu with Animation */}
-//             <div
-//                 className={`md:hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'
-//                     } overflow-hidden`}
-//             >
-//                 <div className="bg-white bg-opacity-30 backdrop-blur-lg px-4 pb-6 space-y-5">
-//                     {links.map((link, index) => (
-//                         <Link
-//                             key={link.href}
-//                             href={link.href}
-//                             className={`block text-black hover:text-yellow-400 font-medium transition duration-300 ease-in-out transform ${isOpen ? 'opacity-100' : 'opacity-0'} transition-opacity delay-${index * 100}`}
-//                             onClick={() => setIsOpen(false)}
-//                         >
-//                             {link.label}
-//                         </Link>
-//                     ))}
-
-//                     {/* Login Button for Mobile */}
-//                     <Link
-//                         href="/signin"
-//                         className="block text-black bg-yellow-500 hover:bg-yellow-600 py-2 px-6 rounded-md font-medium transition duration-300 ease-in-out"
-//                         onClick={() => setIsOpen(false)}
-//                     >
-//                         Signin
-//                     </Link>
-//                 </div>
-//             </div>
-//         </nav>
-//     )
-// }
-
-
-
 'use client'
 
 import { useState, useEffect } from 'react'
@@ -116,6 +6,7 @@ import { FiMenu, FiX, FiUser, FiHome, FiInfo, FiGrid, FiMail } from 'react-icons
 import { usePathname } from 'next/navigation'
 import { useUser } from '@/context/UserContext'
 import Dropdown from '@/components/ui/dropdown'
+import PopOver from '@/components/comp-384'
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -150,19 +41,19 @@ export default function Navbar() {
     return (
         <nav className={`bg-white bg-opacity-30 backdrop-blur-lg shadow-lg  w-full sticky top-0 z-50 transition-all duration-500 ease-in-out ${scrolled ? 'backdrop-blur-xl bg-opacity-50 shadow-xl' : ''}`}>
             {/* Decorative top border */}
-            {/* <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-blue-500 to-indigo-500"></div> */}
+            {/* <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-purple-500 via-purple-500 to-indigo-500"></div> */}
 
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex items-center justify-between py-4">
                     {/* Enhanced Logo */}
                     <Link href="/" className="group flex items-center space-x-2">
                         <div className="relative">
-                            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
+                            <div className="w-10 h-10 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center shadow-lg group-hover:shadow-xl transition-all duration-300 group-hover:scale-105">
                                 <span className="text-white font-bold text-xl">S</span>
                             </div>
-                            <div className="absolute -inset-1 bg-gradient-to-br from-purple-500 to-blue-600 rounded-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></div>
+                            <div className="absolute -inset-1 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl opacity-20 group-hover:opacity-30 transition-opacity duration-300 blur-sm"></div>
                         </div>
-                        <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent group-hover:from-purple-700 group-hover:to-blue-700 transition-all duration-300">
+                        <span className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-purple-600 bg-clip-text text-transparent group-hover:from-purple-700 group-hover:to-purple-700 transition-all duration-300">
                             SmartStay
                         </span>
                     </Link>
@@ -185,7 +76,7 @@ export default function Navbar() {
                                         <link.icon className="w-4 h-4" />
                                         <span>{link.label}</span>
                                         {isActive && (
-                                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
+                                            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-6 h-0.5 bg-gradient-to-r from-purple-500 to-purple-500 rounded-full"></div>
                                         )}
                                     </Link>
                                 )
@@ -200,7 +91,8 @@ export default function Navbar() {
                                         <span className="text-sm font-semibold text-slate-700">Welcome back!</span>
                                         <span className="text-xs text-slate-500">{user?.name || user?.email}</span>
                                     </div>
-                                    <Dropdown user={user} />
+                                    {/* <Dropdown user={user} /> */}
+                                    <PopOver user={user} />
                                 </div>
                             ) : (
                                 <div className="flex items-center gap-3">
@@ -212,7 +104,7 @@ export default function Navbar() {
                                     </Link>
                                     <Link
                                         href="/signup"
-                                        className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-blue-700 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
+                                        className="px-6 py-2.5 bg-gradient-to-r from-purple-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl hover:from-purple-700 hover:to-purple-700 transition-all duration-300 transform hover:scale-105 flex items-center gap-2"
                                     >
                                         <FiUser className="w-4 h-4" />
                                         Get Started
@@ -237,10 +129,10 @@ export default function Navbar() {
                 </div>
 
                 {/* Mobile Menu */}
-                <div className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'
+                <div className={`lg:hidden overflow-y-scroll w-full transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 opacity-100 pb-6' : 'max-h-0 opacity-0'
                     }`}>
-                    <div className="bg-white/60 backdrop-blur-md rounded-2xl mx-2 mb-4 shadow-lg border border-white/50">
-                        <div className="p-6 space-y-4">
+                    <div className="bg-white/60 backdrop-blur-md rounded-2xl mx-2 mb-4  border border-white/50 shadow-none">
+                        <div className="p-2 space-y-4">
                             {/* Mobile Navigation Links */}
                             {links.map((link, index) => {
                                 const isActive = router === link.href
@@ -272,7 +164,7 @@ export default function Navbar() {
                                             <div className="text-sm font-semibold text-slate-700">Welcome back!</div>
                                             <div className="text-xs text-slate-500">{user?.name || user?.email}</div>
                                         </div>
-                                        <Dropdown user={user} />
+                                        <PopOver user={user} />
                                     </div>
                                 ) : (
                                     <div className="space-y-3">
@@ -286,7 +178,7 @@ export default function Navbar() {
                                         <Link
                                             href="/signup"
                                             onClick={() => setIsOpen(false)}
-                                            className="flex items-center justify-center gap-2 p-3 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+                                            className="flex items-center justify-center gap-2 p-3 bg-gradient-to-r from-purple-600 to-purple-600 text-white font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
                                         >
                                             <FiUser className="w-4 h-4" />
                                             Get Started

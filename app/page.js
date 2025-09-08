@@ -1,3 +1,4 @@
+import Brand from "./Components/Brand";
 import ExploreCities from "./Components/ExploreCities";
 import FAQSection from "./Components/FAQSection";
 import Hero from "./Components/Hero";
@@ -15,6 +16,7 @@ export default function Home() {
       <ExploreCities />
       <FAQSection />
       <Reviews />
+      <Brand />
 
 
     </div>
