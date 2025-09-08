@@ -59,7 +59,7 @@ const SignupForm = () => {
                     theme: "light",
                     transition: Bounce,
                 });
-                router.push('/otp-verify');
+                router.push('/otp-varify');
             } else {
                 toast.error(data.message || 'Registration failed', {
                     position: "top-center",

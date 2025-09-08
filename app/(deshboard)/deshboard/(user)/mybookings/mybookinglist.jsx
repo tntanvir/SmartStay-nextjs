@@ -3,16 +3,19 @@
 
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
-import { FaEdit, FaTrash } from "react-icons/fa";
+
 import { MdOutlinePayments } from "react-icons/md";
+
+
+import TooltipForButton from "@/components/tooltip";
 
 export default function MyBookingList({ data, setUrls, next, previous }) {
     return (
         <div className="overflow-x-auto w-full bg-white shadow-lg rounded-lg border border-gray-200">
-            {data && console.log(data)}
+
             <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                    <tr className="text-left text-xs font-semibold text-gray-700 uppercase tracking-wide">
+                <thead className="bg-purple-100 text-purple-700">
+                    <tr className="text-left text-xs font-semibold  uppercase tracking-wide">
                         <th className="px-6 py-3">Room</th>
                         {/* <th className="px-6 py-3">User</th> */}
                         <th className="px-3 py-3">Start Date</th>
@@ -25,116 +28,120 @@ export default function MyBookingList({ data, setUrls, next, previous }) {
                     </tr>
                 </thead>
                 <tbody className="bg-white divide-y divide-gray-100">
-                    {data?.map(
-                        ({
-                            id,
-                            room,
-                            start_date,
-                            end_date,
-                            payment_status,
-                            user,
-                            total_price,
-                            status
-                        }) => (
-                            <tr
-                                key={id}
-                                className="hover:bg-gray-50 transition-colors duration-200"
-                            >
-                                <td className="flex items-center gap-4 px-6 py-4 whitespace-nowrap">
-                                    <img
-                                        src={room?.image}
-                                        alt="Room Image"
-                                        className="w-24 h-16 rounded-lg object-cover border border-gray-200 shadow-sm"
-                                        loading="lazy"
-                                    />
-                                    <div>
-                                        <p className="font-semibold text-gray-900">{room?.title}</p>
-                                        <p className="text-xs text-gray-400 select-text">
-                                            #{id.slice(0, 8)}
-                                        </p>
-                                    </div>
-                                </td>
+                    {
 
-                                {/* <td className="px-6 py-4 whitespace-nowrap">
-                                    <div className="flex items-center gap-3">
+                        data.length === 0 ? Array.from({ length: 5 }).map((_, index) => (
+                            <tr key={index} className="animate-pulse border-b">
+                                <td className="p-4">
+                                    <div className="w-24 h-16 bg-gray-200 rounded-lg" />
+                                </td>
+                                <td className="p-4">
+                                    <div className="h-4 bg-gray-200 rounded w-32" />
+                                </td>
+                                <td className="p-4">
+                                    <div className="h-4 bg-gray-200 rounded w-40" />
+                                </td>
+                                <td className="p-4">
+                                    <div className="h-4 bg-gray-200 rounded w-20" />
+                                </td>
+                                <td className="p-4">
+                                    <div className="h-4 bg-gray-200 rounded w-28" />
+                                </td>
+                                <td className="p-4 flex justify-center gap-3">
+                                    <div className="h-8 w-8 bg-gray-200 rounded" />
+                                    <div className="h-8 w-8 bg-gray-200 rounded" />
+                                </td>
+                            </tr>
+                        )) : data?.map(
+                            ({
+                                id,
+                                room,
+                                start_date,
+                                end_date,
+                                payment_status,
+                                user,
+                                total_price,
+                                status
+                            }) => (
+                                <tr
+                                    key={id}
+                                    className="hover:bg-gray-50 transition-colors duration-200"
+                                >
+                                    <td className="flex items-center gap-4 px-6 py-4 whitespace-nowrap">
                                         <img
-                                            src={user?.profile || "/default-user.png"}
-                                            alt="User Avatar"
-                                            className="w-10 h-10 rounded-full object-cover border border-gray-300"
+                                            src={room?.image}
+                                            alt="Room Image"
+                                            className="w-24 h-16 rounded-lg object-cover border border-gray-200 shadow-sm"
                                             loading="lazy"
                                         />
                                         <div>
-                                            <p className="font-semibold text-gray-900">
-                                                {user?.name || "Unknown"}
-                                            </p>
-                                            <p className="text-xs text-gray-500 truncate max-w-[150px]">
-                                                {user?.email || ""}
+                                            <p className="font-semibold text-gray-900">{room?.title}</p>
+                                            <p className="text-xs text-gray-400 select-text">
+                                                #{id.slice(0, 8)}
                                             </p>
                                         </div>
-                                    </div>
-                                </td> */}
+                                    </td>
 
-                                <td className="px-3 py-4 text-sm text-gray-700 whitespace-nowrap">
-                                    {start_date}
-                                </td>
 
-                                <td className="px-3 py-4 text-sm text-gray-700 whitespace-nowrap">
-                                    {end_date}
-                                </td>
 
-                                <td className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">
-                                    ${total_price}
-                                </td>
+                                    <td className="px-3 py-4 text-sm text-gray-700 whitespace-nowrap">
+                                        {start_date}
+                                    </td>
 
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold
+                                    <td className="px-3 py-4 text-sm text-gray-700 whitespace-nowrap">
+                                        {end_date}
+                                    </td>
+
+                                    <td className="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap">
+                                        ${total_price}
+                                    </td>
+
+                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            className={`inline-block px-3 py-1 rounded-full text-xs font-semibold
                                                 ${status === "confirmed"
+                                                    ? "bg-green-100 text-green-700"
+                                                    : status === "pending"
+                                                        ? "bg-orange-200 text-orange-700"
+                                                        : status === "cancelled"
+                                                            ? "bg-purple-100 text-purple-700"
+                                                            : "bg-gray-100 text-gray-700"
+                                                }`}
+                                        >
+                                            {status.charAt(0).toUpperCase() + status.slice(1)}
+                                        </span>
+                                    </td>
+
+
+                                    <td className="px-6 py-4 whitespace-nowrap">
+                                        <span
+                                            className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${payment_status === "paid"
                                                 ? "bg-green-100 text-green-700"
-                                                : status === "pending"
-                                                    ? "bg-orange-200 text-orange-700"
-                                                    : status === "cancelled"
-                                                        ? "bg-purple-100 text-purple-700"
-                                                        : "bg-gray-100 text-gray-700"
-                                            }`}
-                                    >
-                                        {status.charAt(0).toUpperCase() + status.slice(1)}
-                                    </span>
-                                </td>
+                                                : "bg-purple-100 text-purple-700"
+                                                }`}
+                                        >
+                                            {payment_status.charAt(0).toUpperCase() +
+                                                payment_status.slice(1)}
+                                        </span>
+                                    </td>
+
+                                    <td className="px-4 py-4 whitespace-nowrap flex items-center justify-center gap-2">
 
 
-                                <td className="px-6 py-4 whitespace-nowrap">
-                                    <span
-                                        className={`inline-block px-3 py-1 rounded-full text-xs font-semibold ${payment_status === "paid"
-                                            ? "bg-green-100 text-green-700"
-                                            : "bg-purple-100 text-purple-700"
-                                            }`}
-                                    >
-                                        {payment_status.charAt(0).toUpperCase() +
-                                            payment_status.slice(1)}
-                                    </span>
-                                </td>
+                                        <Button variant="outline" disabled={payment_status !== "unpaid"}>
+                                            <Link className="text-purple-600 hover:text-purple-800 flex justify-center items-center gap-1.5" href={`/deshboard/checkout/${id}`}>
+                                                <MdOutlinePayments />
+                                                pay now
+                                            </Link>
+                                        </Button>
+                                        {status === "confirmed" && payment_status !== "unpaid" && <div>
+                                            <TooltipForButton id={room?.id} />
 
-                                <td className="px-4 py-4 whitespace-nowrap">
-
-                                    {/* <button
-                                        onClick={() => console.log(id)}
-                                        className="text-purple-600 hover:text-purple-800"
-                                        title="Edit"
-                                    >
-                                        pay now
-                                    </button> */}
-                                    <Button variant="outline" disabled={payment_status !== "unpaid"}>
-                                        <Link className="text-purple-600 hover:text-purple-800 flex justify-center items-center gap-1.5" href={`/deshboard/checkout/${id}`}>
-                                            <MdOutlinePayments />
-                                            pay now
-                                        </Link>
-                                    </Button>
-
-                                </td>
-                            </tr>
-                        )
-                    )}
+                                        </div>}
+                                    </td>
+                                </tr>
+                            )
+                        )}
                 </tbody>
             </table>
 

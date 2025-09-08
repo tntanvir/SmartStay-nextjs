@@ -124,23 +124,7 @@ const MostRecentRoom = () => {
                         Discover the latest rooms added to our collection. Find your perfect space with modern amenities and premium locations.
                     </p>
 
-                    {/* Stats Bar */}
-                    {/* <div className="flex justify-center items-center gap-8 mt-8 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-purple-100 max-w-2xl mx-auto">
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-purple-600">500+</div>
-                            <div className="text-sm text-gray-600">Properties</div>
-                        </div>
-                        <div className="w-px h-8 bg-purple-200"></div>
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-purple-600">50+</div>
-                            <div className="text-sm text-gray-600">Locations</div>
-                        </div>
-                        <div className="w-px h-8 bg-purple-200"></div>
-                        <div className="text-center">
-                            <div className="text-2xl font-bold text-purple-600">98%</div>
-                            <div className="text-sm text-gray-600">Satisfaction</div>
-                        </div>
-                    </div> */}
+
                 </div>
 
                 {/* Content Section */}

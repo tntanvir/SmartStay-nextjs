@@ -1,11 +1,15 @@
 
 
 'use client'
+import { useUser } from "@/context/UserContext";
 import Link from "next/link";
 import { FaHeart, FaMapMarkerAlt, FaBed, FaBath, FaRulerCombined } from "react-icons/fa";
 import { toast } from "react-toastify";
-
+import { MdHome } from "react-icons/md";
+import { HiOutlineSparkles } from "react-icons/hi";
 export default function PropertyCard({ image, title, location, bed, bath, sqft, price, id, total_bookings }) {
+
+    const { user } = useUser();
     const AddMYFavorites = (id) => {
         fetch(`https://smartstay-api.up.railway.app/favorites/favorites/`, {
             method: 'POST',
@@ -43,22 +47,22 @@ export default function PropertyCard({ image, title, location, bed, bath, sqft, 
 
                 {/* Status Tag */}
                 {total_bookings ? (
-                    <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-500 to-purple-600 text-white px-4 py-2 text-sm font-medium rounded-full shadow-lg">
-                        ✨ {total_bookings} Bookings
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-100/50 to-purple-200/65 text-purple-800 px-4 py-2 text-sm font-medium rounded-full shadow-lg flex items-center gap-1 justify-center">
+                        <HiOutlineSparkles /> {total_bookings} Bookings
                     </div>
                 ) : (
-                    <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-600 to-purple-700 text-white px-4 py-2 text-sm font-medium rounded-full shadow-lg">
-                        🏠 For Sale
+                    <div className="absolute top-4 left-4 bg-gradient-to-r from-purple-100/50 to-purple-200/65 text-purple-800 px-4 py-2 text-sm font-medium rounded-full shadow-lg flex items-center gap-1 justify-center">
+                        <MdHome /> For Booking
                     </div>
                 )}
 
                 {/* Favorite Icon */}
-                <button
+                {user && <button
                     onClick={() => AddMYFavorites(id)}
                     className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-full p-3 shadow-lg hover:bg-purple-500 hover:text-white transition-all duration-300 transform hover:scale-110"
                 >
                     <FaHeart className="w-4 h-4" />
-                </button>
+                </button>}
             </div>
 
             {/* Content Section */}
